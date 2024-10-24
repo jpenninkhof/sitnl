@@ -1,0 +1,106 @@
+.sitnl-location .sitnl-location-header h2 {
+  padding-block-start: 4rem;
+  color: var(--brand-color-alt);
+}
+
+.sitnl-location .sitnl-location-header {
+  background: linear-gradient(to bottom, var(--white) 20%, rgba(255, 255, 255, .0));
+}
+
+.sitnl-location .sitnl-location-header h2 span {
+  z-index: 5;
+  position: relative;
+  display: inline-block;
+}
+
+.sitnl-location .sitnl-location-header h2 span::before {
+  top: 68%;
+  z-index: -1;
+  opacity: .8;
+  content: "";
+  height: 0.6rem;
+  left: -0.125rem;
+  right: -0.125rem;
+  position: absolute;
+  background: var(--brand-color);
+}
+
+.sitnl-location .sitnl-box li::marker {
+  color: var(--brand-color-alt);
+}
+
+.sitnl-location .sitnl-location-address {
+  max-width: 100%;
+  margin-block: 2rem;
+  margin-inline: auto;
+}
+
+.sitnl-location .sitnl-location-address img {
+  max-width: 100%;
+}
+
+.sitnl-location .sitnl-location-address a:is(:focus) img,
+.sitnl-location .sitnl-location-address:is(:hover) img {
+  outline-offset: 0.5rem;
+  outline: 0.125rem solid var(--brand-color-alt);
+}
+
+.sitnl-location .sitnl-location-car {
+  gap: 6rem;
+  display: flex;
+}
+
+.sitnl-location .sitnl-location-car h3 {
+  font-size: var(--type-0);
+}
+
+.sitnl-location .sitnl-location-parking,
+.sitnl-location .sitnl-location-transportation {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sitnl-location .sitnl-location-parking .contents {
+  flex-basis: 100%;
+}
+
+.sitnl-location .sitnl-location-car img {
+  display: none;
+  min-width: clamp(20rem, 20vw, 10rem);
+}
+
+.sitnl-location .sitnl-location-parking img {
+  display: none;
+  max-width: 30%;
+  align-self: end;
+}
+
+.sitnl-location .sitnl-location-transportation img {
+  display: none;
+  max-width: fit-content;
+  margin-inline-start: -2rem;
+}
+
+@media only screen and (min-width: 1021px) {
+  .sitnl-location .sitnl-location-address {
+    max-width: 90%;
+    text-align: left;
+    margin-block: 4rem;
+  }
+
+  .sitnl-location .sitnl-location-parking {
+    padding-block-end: 0;
+  }
+
+.sitnl-location .sitnl-location-parking p,
+.sitnl-location .sitnl-location-transportation p {
+  margin-block-start: 0;
+}
+
+  .sitnl-location .sitnl-location-car img,
+  .sitnl-location .sitnl-location-parking img,
+  .sitnl-location .sitnl-location-transportation img {
+    display: block;
+  }
+}
