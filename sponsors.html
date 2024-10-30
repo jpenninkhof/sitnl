@@ -94,43 +94,43 @@
                 <span class="sitnl-sponsors-badge">{{sponsor.sponsortype}}</span>
 
                 <ul class="sitnl-sponsors-socials">
-                  <li>
+                  <li v-if="sponsor.website">
                     <a :href="`${sponsor.website}`" :aria-label="`Website of ${sponsor.name}}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#website"></use>
                       </svg>
                     </a>
                   </li>
-                  <li>
+                  <li v-if="sponsor.linkedInHandle">
                     <a :href="`https://www.linkedin.com/company/${sponsor.linkedInHandle}/`" :aria-label="`Linkedin profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#linkedin"></use>
                       </svg>
                     </a>
                   </li>
-                  <li>
+                  <li v-if="sponsor.twitterHandle">
                     <a :href="`https://twitter.com/${sponsor.twitterHandle}`" :aria-label="`Twitter profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#twitter"></use>
                       </svg>
                     </a>
                   </li>
-                  <li>
+                  <li v-if="sponsor.instagramHandle">
                     <a :href="`https://www.instagram.com/${sponsor.instagramHandle}/`" :aria-label="`Instagram profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#insta"></use>
                       </svg>
                     </a>
                   </li>
-                  <li>
+                  <li v-if="sponsor.facebookHandle">
                     <a :href="`https://www.facebook.com/${sponsor.facebookHandle}`" :aria-label="`Facebook page of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#facebook"></use>
                       </svg>
                     </a>
                   </li>
-                  <li>
-                    <a :href="`https://www.youtube.com/${sponsor.youtubeHandle}`" :aria-label="`Youtube profile of ${sponsor.name}`" rel="nofollow" target="_blank">
+                  <li v-if="sponsor.youtubeHandle">
+                    <a :href="`https://www.youtube.com/@${sponsor.youtubeHandle}`" :aria-label="`Youtube profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#youtube"></use>
                       </svg>
