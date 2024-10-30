@@ -60,7 +60,7 @@
 
   </header>
 
-  <main>
+  <main id="main">
     <section>
       <div class="sitnl-wrap">
         <div class="sitnl-box">
@@ -88,93 +88,49 @@
             <img aria-hidden="true" class="sitnl-illustration" src="images/deal.svg" alt="Illustration of two hands in a handshake">
           </div>
           <ul class="sitnl-sponsors-list">
-            <li>
+
+            <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
               <div>
-                <span class="sitnl-sponsors-badge">Sponsor</span>
+                <span class="sitnl-sponsors-badge">{{sponsor.sponsortype}}</span>
 
                 <ul class="sitnl-sponsors-socials">
                   <li>
-                    <a href="https://www.neptune-software.com/" aria-label="Website of Neptune Software" rel="nofollow" target="_blank">
+                    <a :href="`${sponsor.website}`" :aria-label="`Website of ${sponsor.name}}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#website"></use>
                       </svg>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.linkedin.com/company/neptune-software/" aria-label="Linkedin profile of Neptune Software" rel="nofollow" target="_blank">
+                    <a :href="`https://www.linkedin.com/company/${sponsor.linkedInHandle}/`" :aria-label="`Linkedin profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#linkedin"></use>
                       </svg>
                     </a>
                   </li>
                   <li>
-                    <a href="https://twitter.com/neptsoft" aria-label="Twitter profile of Neptune Software" rel="nofollow" target="_blank">
+                    <a :href="`https://twitter.com/${sponsor.twitterHandle}`" :aria-label="`Twitter profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#twitter"></use>
                       </svg>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/neptunesoftware/" aria-label="Instagram profile of Neptune Software" rel="nofollow" target="_blank">
+                    <a :href="`https://www.instagram.com/${sponsor.instagramHandle}/`" :aria-label="`Instagram profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#insta"></use>
                       </svg>
                     </a>
                   </li>
-                </ul>
-              </div>
-              <div>
-                <h3>
-                  Neptune Software: Low-Code Enterprise App Development
-                </h3>
-                <p>
-                  Neptune Software is a rapid application development platform vendor with more than 730 enterprise customers and over 4 million licensed end users globally that empowers IT departments to deliver tangible business outcomes. Neptune Software offers with its Neptune DXP, a leading low-code, SAP-centric, enterprise app development platform to digitize and optimize business processes and user interfaces – at scale and with ease. Neptune DXP provides a fast and cost-effective way to industrialize the development of custom applications - saving companies time and money on development, integration, and operations.
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <div>
-                <span class="sitnl-sponsors-badge">Sponsor</span>
-
-                <ul class="sitnl-sponsors-socials">
                   <li>
-                    <a href="https://community.sap.com/" aria-label="Website of SAP" rel="nofollow" target="_blank">
-                      <svg class="icon" aria-hidden="true">
-                        <use xlink:href="images/icons/sprite.svg#website"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/company/sap/" aria-label="Linkedin profile of SAP" rel="nofollow" target="_blank">
-                      <svg class="icon" aria-hidden="true">
-                        <use xlink:href="images/icons/sprite.svg#linkedin"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/sapcommunity/" aria-label="Facebook page of SAP" rel="nofollow" target="_blank">
+                    <a :href="`https://www.facebook.com/${sponsor.facebookHandle}`" :aria-label="`Facebook page of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#facebook"></use>
                       </svg>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/sap/" aria-label="Instagram profile of SAP" rel="nofollow" target="_blank">
-                      <svg class="icon" aria-hidden="true">
-                        <use xlink:href="images/icons/sprite.svg#insta"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://x.com/sapcommunity" aria-label="X profile of SAP" rel="nofollow" target="_blank">
-                      <svg class="icon" aria-hidden="true">
-                        <use xlink:href="images/icons/sprite.svg#twitter"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.youtube.com/SAPCommunities" aria-label="Youtube profile of SAP" rel="nofollow" target="_blank">
+                    <a :href="`https://www.youtube.com/${sponsor.youtubeHandle}`" :aria-label="`Youtube profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#youtube"></use>
                       </svg>
@@ -184,14 +140,14 @@
               </div>
               <div>
                 <h3>
-                  SAP: Help the world run better, and improve people's lives.
+                  {{sponsor.name}}
+                  <span v-if="sponsor.motto"> : {{ sponsor.motto }}</span>
                 </h3>
                 <p>
-                  As a global leader in enterprise applications and business AI, SAP  stands at the nexus of business and technology. For over 50 years, organizations have trusted SAP  to bring out their best by uniting business-critical operations spanning finance, procurement, HR, supply chain, and customer experience.
+                  {{sponsor.description}}
                 </p>
               </div>
             </li>
-
           </ul>
         </div>
       </div>
@@ -243,6 +199,7 @@
   <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
   <script src="./js/luxon.min.js"></script>
   <script src="./js/agenda.js"></script>
+  <script src="./js/sponsors.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/sendinblue.js"></script>
   <script src="./js/a11y-dialog.min.js"></script>

@@ -139,7 +139,7 @@
             </fieldset>
           </div>
 
-          <fieldset class="sitnl-agenda-toggle" v-if="'UTC '+getLocalTimeZone() !== 'UTC +2'">
+          <fieldset class="sitnl-agenda-toggle" v-if="'UTC '+getLocalTimeZone() !== 'UTC +1'">
             <legend class="sr-only">Timezone</legend>
             <div class="sitnl-agenda-toggle__element">
               <input
@@ -152,7 +152,7 @@
               />
               <label for="timezone1">
                 event time
-                <time datetime="2022-07-07T00:00">(UTC+2)</time>
+                <time datetime="2022-07-07T00:00">(UTC+1)</time>
               </label>
             </div>
             <div class="sitnl-agenda-toggle__element">
@@ -420,50 +420,15 @@
             </div>
           </div>
 
-
           <div class="sitnl-sponsors sitnl-box-flex sitnl-box-flex-column-center">
-
             <ul class="sitnl-sponsors-logos">
-              <li>
-                <a href="https://www.interdobs.nl/" rel="external nofollow" aria-label="Interdobs" hreflang="en" target="_blank">
-                  <img src="images/sponsors/interdobs.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.innov8ion.nl/" rel="external nofollow" aria-label="Innov8ion" hreflang="en" target="_blank">
-                  <img src="images/sponsors/innov8ion.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.soapeople.com/" rel="external nofollow" aria-label="SOA People" hreflang="en" target="_blank">
-                  <img src="images/sponsors/soapeople.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.expertum.net/" rel="external nofollow" aria-label="Expertum" hreflang="en" target="_blank">
-                  <img src="images/sponsors/expertum.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.amista.com/nl/" rel="external nofollow" aria-label="Amista" hreflang="en" target="_blank">
-                  <img src="images/sponsors/amista.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.emixa.com/" rel="external nofollow" aria-label="Emixa" hreflang="en" target="_blank">
-                  <img src="images/sponsors/emixa.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://community.sap.com/" rel="external nofollow" aria-label="SAP Community" hreflang="en" target="_blank">
-                  <img src="images/sponsors/sapcommunity.png" width="288">
-                </a>
-              </li>
-              <li>
-                <a href="https://www.sap.com/" rel="external nofollow" aria-label="SAP" hreflang="en" target="_blank">
-                  <svg aria-hidden="true" class="sap">
-                    <use xlink:href="images/sponsors/sprite.svg#sap" id="sap"></use>
-                  </svg>
+              <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
+                <a :href="`${sponsor.website}`" rel="external nofollow" aria-label="Interdobs" hreflang="en" target="_blank">
+                  <img
+                    :src="`images/sponsors/${sponsor.logo}`"
+                    :alt="`Logo of ${sponsor.name}`"
+                    style="max-width:300px;max-height:100px;height:auto;width:auto"
+                  />
                 </a>
               </li>
             </ul>
@@ -531,6 +496,7 @@
   <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
   <script src="./js/luxon.min.js"></script>
   <script src="./js/agenda.js"></script>
+  <script src="./js/sponsors.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/sendinblue.js"></script>
   <script src="./js/a11y-dialog.min.js"></script>

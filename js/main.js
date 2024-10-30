@@ -36,15 +36,18 @@ var main = new Vue({
       lineup: [],
       proposalLineup: [],
       formattedLineup: [],
+      sponsorLineup: [],
       expertCornerLineupUnsorted: [],
       expertCornerLineup: {},
       lastFocussedElementID: '',
-      proposalLineupJson: proposalLineupJson
+      proposalLineupJson: proposalLineupJson,
+      sponsorLineupJson: sponsorLineupJson
     };
   },
   mounted() {
     this.lineup = proposalLineupJson;
     this.formattedLineup = this.formatLineup();
+    this.sponsorLineup = sponsorLineupJson;
     this.groupExpertCornerTopics();
 
     this.updateLiveSession();
