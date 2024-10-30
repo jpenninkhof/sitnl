@@ -91,8 +91,12 @@
 
             <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
               <div>
+                <img
+                  :src="`images/sponsors/${sponsor.logo}`"
+                  :alt="`Logo of ${sponsor.name}`"
+                  style="max-width:200px;max-height:66px;height:auto;width:auto"
+                />
                 <span class="sitnl-sponsors-badge">{{sponsor.sponsortype}}</span>
-
                 <ul class="sitnl-sponsors-socials">
                   <li v-if="sponsor.website">
                     <a :href="`${sponsor.website}`" :aria-label="`Website of ${sponsor.name}}`" rel="nofollow" target="_blank">
@@ -141,7 +145,7 @@
               <div>
                 <h3>
                   {{sponsor.name}}
-                  <span v-if="sponsor.motto"> : {{ sponsor.motto }}</span>
+                  <span v-if="sponsor.motto"> - {{ sponsor.motto }}</span>
                 </h3>
                 <p>
                   {{sponsor.description}}
