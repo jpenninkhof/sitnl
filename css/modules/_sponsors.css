@@ -112,7 +112,7 @@
   display: flex;
   flex-direction: column;
   margin-block-end: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
   gap: clamp(1rem, 5vw, 2rem);
   border-bottom: 0.125rem dashed var(--brand-color-alt);
 }
