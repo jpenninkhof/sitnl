@@ -61,6 +61,10 @@
   flex-direction: column;
 }
 
+.sitnl-location .sitnl-location-transportation h3 {
+  font-size: var(--type-0);
+}
+
 .sitnl-location .sitnl-location-parking .contents {
   flex-basis: 100%;
 }
