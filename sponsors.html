@@ -91,12 +91,14 @@
 
             <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
               <div>
-                <img
-                  :src="`images/sponsors/${sponsor.logo}`"
-                  :alt="`Logo of ${sponsor.name}`"
-                  style="max-width:200px;max-height:66px;height:auto;width:auto"
-                  width="200px"
-                />
+                <picture>
+                  <img
+                    :src="`images/sponsors/${sponsor.logo}`"
+                    :alt="`Logo of ${sponsor.name}`"
+                    style="max-width:200px;max-height:66px;height:auto;width:auto;padding-top:0.5rem"
+                    width="200px"
+                  />
+                </picture>
                 <span class="sitnl-sponsors-badge">{{sponsor.sponsortype}}</span>
               </div>
               <div>
