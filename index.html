@@ -425,10 +425,18 @@
             <ul class="sitnl-sponsors-logos">
               <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
                 <a :href="`${sponsor.website}`" rel="external nofollow" aria-label="Interdobs" hreflang="en" target="_blank">
-                  <img
+                  <svg 
+                    v-if="sponsor.logo.startsWith('sprite.svg')"
+                    aria-hidden="true" :class="`${sponsor.logo.split('#')[1]}`">
+                    <use 
+                      :xlink:href="`images/sponsors/${sponsor.logo}`" 
+                      :id="`${sponsor.logo.split('#')[1]}`"></use>
+                  </svg>
+                  <img 
+                    v-else
                     :src="`images/sponsors/${sponsor.logo}`"
                     :alt="`Logo of ${sponsor.name}`"
-                    style="max-width:300px;max-height:100px;height:auto;width:auto"
+                    style="max-width:300px;max-height:100px;height:auto;width:auto"        
                   />
                 </a>
               </li>
