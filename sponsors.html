@@ -91,7 +91,7 @@
 
             <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
               <div>
-                <picture>
+                <picture style="text-align: -webkit-center">
                   <svg 
                     v-if="sponsor.logo.startsWith('sprite.svg')"
                     aria-hidden="true" :class="`${sponsor.logo.split('#')[1]}`"
