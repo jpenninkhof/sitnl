@@ -95,6 +95,7 @@
                   <svg 
                     v-if="sponsor.logo.startsWith('sprite.svg')"
                     aria-hidden="true" :class="`${sponsor.logo.split('#')[1]}`"
+                    style="max-width:200px;max-height:66px;height:auto;width:auto;padding-top:0.5rem"
                     width="200px">
                     <use 
                       :xlink:href="`images/sponsors/${sponsor.logo}`" 
