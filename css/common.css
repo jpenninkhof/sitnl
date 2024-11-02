@@ -1124,6 +1124,10 @@ svg.asbrucon {
   --emixa-color: #000;
 }
 
+#expertum {
+  --expertum-color: #000;
+}
+
 #innov8ion {
   --innov8ion-color: #000;
 }
@@ -1217,6 +1221,10 @@ footer {
 
   #emixa {
     --emixa-color: #fff;
+  }
+
+  #expertum {
+    --expertum-color: #fff;
   }
 
   #innov8ion {
