@@ -1128,6 +1128,15 @@ svg.asbrucon {
   --innov8ion-color: #000;
 }
 
+#comweg {
+  --comweg-color-0: #2D0448;
+  --comweg-color-1: #DB0EB7;
+  --comweg-color-2: #01012C;
+  --comweg-color-3: #84097F;
+  --comweg-color-4: #580664;
+  --comweg-color-5: #AF0B9B;
+}
+
 /* ---------------------------- Site Footer ----------------------------  */
 footer {
   background: var(--white);
@@ -1214,6 +1223,15 @@ footer {
     --innov8ion-color: #33CC66;
   }
 
+  #comweg {
+    --comweg-color-0: #fff;
+    --comweg-color-1: #fff;
+    --comweg-color-2: #fff;
+    --comweg-color-3: #fff;
+    --comweg-color-4: #fff;
+    --comweg-color-5: #fff;
+  }
+  
   .sitnl-site-head {
     background-image: linear-gradient(to bottom, rgba(50, 50, 50, 1), rgba(255,255,255,.0))
   }
