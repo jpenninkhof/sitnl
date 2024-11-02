@@ -225,6 +225,10 @@
                 <img src="images/lunch.svg" alt="Illustration of a meal"/>
               </div>
 
+              <div v-if="event.title.toLowerCase().startsWith('break')" class="sitnl-agenda-slot-illustration">
+                <img src="images/coffee.svg" alt="Illustration of a cup of coffee"/>
+              </div>
+
               <div v-if="event.title.toLowerCase() === 'afterparty'" class="sitnl-agenda-slot-illustration">
                 <img src="images/drinks.svg" alt="Illustration of a bottle of wine with a glass"/>
               </div>
