@@ -1115,19 +1115,17 @@ svg.asbrucon {
   fill: #000;
 }
 
-#jssoft {
-  --js-color-1: #878887;
-  --js-color-2: #333366;
-}
-
 #neptune {
   --neptune-color-0: #38102a;
   --neptune-color-1: #ff9e33;
 }
 
-#integrtr {
-  --integrtr-color-1: #424241;
-  --integrtr-color-2: #000;
+#emixa {
+  --emixa-color: #000;
+}
+
+#innov8ion {
+  --innov8ion-color: #000;
 }
 
 /* ---------------------------- Site Footer ----------------------------  */
@@ -1203,19 +1201,17 @@ footer {
     fill: var(--logo-color);
   }
 
-  #jssoft {
-    --js-color-1: var(--logo-color);
-    --js-color-2: var(--logo-color);
-  }
-
   #neptune {
     --neptune-color-0: #fff;
     --neptune-color-1: #ff9e33;
   }
 
-  #integrtr {
-    --integrtr-color-1: #fff;
-    --integrtr-color-2: #fff;
+  #emixa {
+    --emixa-color: #fff;
+  }
+
+  #innov8ion {
+    --innov8ion-color: #33CC66;
   }
 
   .sitnl-site-head {
