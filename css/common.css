@@ -607,10 +607,6 @@ article {
   padding-inline: 3vw;
 }
 
-.sitnl-video {
-  text-align: center;
-}
-
 .sitnl-grid-wrap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
@@ -1255,5 +1251,18 @@ footer {
 
   p.sitnl-agenda-slot-speakers {
     color: var(--text-color);
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
