@@ -607,6 +607,10 @@ article {
   padding-inline: 3vw;
 }
 
+.sitnl-video {
+  text-align: center;
+}
+
 .sitnl-grid-wrap {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
