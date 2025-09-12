@@ -20,8 +20,8 @@ const (
 	speakerURL  = "https://sitnl.cfapps.eu12.hana.ondemand.com/api/speaker"
 	sponsorURL  = "https://presales-nl---build-apps-dev-sitnl-srv.cfapps.eu12.hana.ondemand.com/api/sponsors"
 
-	imagesTargetDir = "../site/images/speakers"
-	sponsorFile     = "../site/js/sponsors.js"
+	imagesTargetDir = "../images/speakers"
+	sponsorFile     = "../js/sponsors.js"
 )
 
 func main() {
