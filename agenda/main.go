@@ -180,7 +180,7 @@ func writeAgenda(proposals []interface{}) {
 	}
 
 	// Write modified JSON to file
-	filePath := filepath.Join("..", "sitnl2024", "js", "agenda.js")
+	filePath := filepath.Join("..", "js", "agenda.js")
 	err = ioutil.WriteFile(filePath, []byte("var proposalLineupJson = "+string(agenda)+";"), 0644)
 	if err != nil {
 		fmt.Println("Error writing file:", err)
@@ -304,7 +304,7 @@ func cleanupProposal(proposals map[string]interface{}, speakers []interface{}) {
 				if hash, ok := propSpeakerMap["hash"].(string); ok {
 
 					// Check if the speaker has an image
-					imagePath := filepath.Join("..", "sitnl2024", "images", "speakers", hash+".jpg")
+					imagePath := filepath.Join("..", "images", "speakers", hash+".jpg")
 					_, err := os.Stat(imagePath)
 					propSpeakerMap["hasPhoto"] = err == nil
 					if err == nil {
