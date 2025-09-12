@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAP Inside Track Netherlands 2024</title>
+  <meta name="description"
+    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
+  <meta name="keywords"
+    content="sap, technology, development, bi, data management, integration, extensions, datasphere, sap build, abap, cap, ui5" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="SAP SE" />
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:url" content="https://sitnl.nl/" />
+  <meta property="twitter:title" content="SAP Inside Track Netherlands 2024" />
+  <meta property="twitter:description"
+    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
+  <meta property="twitter:image" content="https://sitnl.nl/images/share.png" />
+  <meta property="og:title" content="#sitNL - November 16th, 2024" />
+  <meta property="og:description"
+    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
+  <meta property="og:image" content="https://sitnl.nl/images/share.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+  <link rel="icon" sizes="any" href="images/android-chrome-192x192.png" />
+
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/modules.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<body>
+  <header class="sitnl-site-head " id="header">
+    <div class="sitnl-wrap">
+      <nav class="sitnl-nav" aria-label="Main navigation">
+        <ul>
+          <li>
+            <a href="index.html" class=""  aria-current="true" aria-label="Home">
+              <span class="sr-only">Link to Home Page</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="sitnl-logo" viewBox="0 0 195 48" aria-hidden="true">
+                <text style="fill: rgb(255, 128, 0); font-family: Arial, sans-serif; font-size: 64px; font-weight: 700; white-space: pre;" x="0" y="46.871">#sitNL</text>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="sponsors.html">sponsoring</a>
+          </li>
+          <li>
+            <a href="index.html#agenda">agenda</a>
+          </li>
+          <li>
+            <a href="location.html">getting here</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sitnl-logo-container">
+        <img class="sitnl-site-head-img" aria-hidden="true" src="images/logo.png" alt="SAP Inside Track Logo">
+      </div>
+      <p>November 16th, 2024 - 's Hertogenbosch, Netherlands</p>
+      <h1>That's a <span><em>Wrap!</em></span></h1>
+      <div class="video-container">
+        <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;" allowfullscreen src="https://www.youtube.com/embed/EyFSG2LxLCM?si=UUmYlmWHbnYb2esv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="sitnl-site-head-cta">
+        <a href="https://photos.app.goo.gl/AZmnfymytHRdrEfe8" target="_blank" class="sitnl-btn">
+          Look at the memories
+        </a>
+      </div>    
+    </div>
+
+  </header>
+
+  <main id="main">
+
+    <!-- TEASERS SECTION -->
+    <section>
+      <div class="sitnl-wrap">
+        <div class="sitnl-grid-wrap">
+          <div class="sitnl-teaser">
+            <img class="sitnl-teaser-img" src="images/cheers.svg" alt="Illustration of two people having a cup of coffee sitting at a table">
+            <h2>what?</h2>
+            <p>
+              #sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies
+            </p>
+          </div>
+
+          <div class="sitnl-teaser">
+            <img class="sitnl-teaser-img" src="images/glasses.svg" alt="Illustration of looking glasses">
+            <h2>where?</h2>
+            <p>
+              Join the event on November 16th, in-person at the SAP Office in Den Bosch, The Netherlands. Virtual attendance is unfortunately not possible.
+            </p>
+          </div>
+
+          <div class="sitnl-teaser">
+            <img class="sitnl-teaser-img" src="images/globe.svg" alt="Illustration of the globe">
+            <h2>how?</h2>
+            <p>
+              #sitNL is a free of charge event for SAP technology enthusiasts to meet and find out what’s happening.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDA SECTION -->
+     <section id="agenda" ref="agenda" v-if="this.formattedLineup">
+      <div class="sitnl-wrap center">
+        <h2 class="emphasized">Our Agenda</h2>
+
+        <div class="agenda-sort">
+          <div class="sitnl-agenda-filter-container">
+            <fieldset class="sitnl-agenda-filter">
+              <legend class="sr-only">Show all elements of the agenda</legend>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="all" name="filter" value="all" @change="onFilterChange($event)" checked>
+                <label for="all" class="sitnl-agenda-filter__label">All</label>
+              </div>
+            </fieldset>
+            <fieldset class="sitnl-agenda-filter">
+              <legend class="sitnl-agenda-filter__legend">
+                Filter by track type
+              </legend>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="presentation_tech" name="filter" value="presentation_tech" @change="onFilterChange($event)">
+                <label for="presentation_tech" class="sitnl-agenda-filter__label">Tech track</label>
+              </div>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="presentation_bi" name="filter" value="presentation_bi" @change="onFilterChange($event)">
+                <label for="presentation_bi" class="sitnl-agenda-filter__label">BI/Data track</label>
+              </div>
+            </fieldset>
+            <fieldset class="sitnl-agenda-filter">
+              <legend class="sitnl-agenda-filter__legend">Filter by room</legend>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="networking" name="filter" value="networking" @change="onFilterChange($event)">
+                <label for="networking" class="sitnl-agenda-filter__label">Networking Space</label>
+              </div>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="creative" name="filter" value="creative" @change="onFilterChange($event)">
+                <label for="creative" class="sitnl-agenda-filter__label">Creative Space</label>
+              </div>
+              <div class="sitnl-agenda-filter__element">
+                <input type="radio" id="universe" name="filter" value="universe" @change="onFilterChange($event)">
+                <label for="universe" class="sitnl-agenda-filter__label">Universe</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <fieldset class="sitnl-agenda-toggle" v-if="'UTC '+getLocalTimeZone() !== 'UTC +1'">
+            <legend class="sr-only">Timezone</legend>
+            <div class="sitnl-agenda-toggle__element">
+              <input
+                type="radio"
+                id="timezone1"
+                name="event-time"
+                value="event"
+                @change="onTimeChange($event)"
+                checked
+              />
+              <label for="timezone1">
+                event time
+                <time datetime="2022-07-07T00:00">(UTC+1)</time>
+              </label>
+            </div>
+            <div class="sitnl-agenda-toggle__element">
+              <input
+                type="radio"
+                id="timezone2"
+                name="event-time"
+                value="local"
+                @change="onTimeChange($event)"
+              />
+              <label for="timezone2">
+                your time
+                <time datetime="2024-06-05T00:00">(UTC {{getLocalTimeZone()}})</time>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <ol class="sitnl-agenda">
+
+          <li class="sitnl-agenda-slot" v-for="event in this.formattedLineup" :key="event.id" v-cloak>
+            <span class="live-token" v-if="event.isLive && event.location.toLowerCase() === 'networking'">live now</span>
+            <div class="sitnl-agenda-slot-header">
+              <div>
+                <p class="sitnl-agenda-slot-details">
+                  <span class="sitnl-agenda-time">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewbox="0 0 16 16">
+                      <path fill="currentColor" d="M10.2 11c-.18 0-.35-.06-.5-.18L7.4 8.96a.792.792 0 0 1-.3-.62V4.8c0-.44.36-.8.8-.8.44 0 .8.36.8.8v3.16l2.01 1.62c.34.28.4.78.12 1.12-.16.2-.39.3-.62.3Zm4.8 1.2V3.8C15 2.26 13.74 1 12.2 1H3.8C2.26 1 1 2.26 1 3.8v8.4C1 13.74 2.26 15 3.8 15h8.4c1.54 0 2.8-1.26 2.8-2.8Zm-2.8-9.6c.66 0 1.2.54 1.2 1.2v8.4c0 .66-.54 1.2-1.2 1.2H3.8c-.66 0-1.2-.54-1.2-1.2V3.8c0-.66.54-1.2 1.2-1.2h8.4Z"/>
+                    </svg>
+
+                    {{event.startTime| convertTime(eventTime) | trimTime}} - {{event.endTime| convertTime(eventTime) |
+                    trimTime}}
+                  </span>
+
+                  <span class="sitnl-agenda-room">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M7.5 16c-.16 0-.32-.05-.46-.14C6.79 15.69 1 11.6 1 6.56 1 2.88 3.85 0 7.5 0S14 2.88 14 6.56c0 5.04-5.8 9.13-6.04 9.3-.14.1-.3.14-.46.14Zm0-14.4c-2.75 0-4.9 2.18-4.9 4.96 0 3.46 3.6 6.62 4.9 7.64 1.3-1.02 4.9-4.17 4.9-7.64 0-2.78-2.15-4.96-4.9-4.96Zm0 8c-1.68 0-3-1.32-3-3s1.32-3 3-3 3 1.32 3 3-1.32 3-3 3Zm0-4.4c-.81 0-1.4.59-1.4 1.4S6.69 8 7.5 8s1.4-.59 1.4-1.4-.59-1.4-1.4-1.4Z"/>
+                    </svg>
+
+                    {{event.location | formatLocation}}
+                  </span>
+
+                  <span v-if="event.type.includes('presentation') || event.type.includes('hands') || event.type.includes('keynote') || event.type.includes('expert')" >
+
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M8 16c-.44 0-.8-.36-.8-.8v-2.25A6.01 6.01 0 0 1 2 7v-.2c0-.44.36-.8.8-.8s.8.36.8.8v.18c0 2.44 1.97 4.42 4.4 4.42s4.4-1.97 4.4-4.4v-.2c0-.44.36-.8.8-.8s.8.36.8.8V7c0 3.04-2.27 5.55-5.2 5.95v2.25c0 .44-.36.8-.8.8Zm0-6a2.5 2.5 0 0 1-2.5-2.5v-5a2.5 2.5 0 0 1 5 0v5A2.5 2.5 0 0 1 8 10Zm0-8.4c-.5 0-.9.4-.9.9v5c0 .5.4.9.9.9s.9-.4.9-.9v-5c0-.5-.4-.9-.9-.9Z"/>
+                    </svg>
+
+                    {{event.type | formatType}}
+                  </span>
+                </p>
+
+                <h2 class="sitnl-agenda-slot-title" v-html="event.title"></h2>
+              </div>
+
+              <div v-if="event.speakers.length > 0" class="sitnl-agenda-slot-speakers-images">
+                <template v-for="speaker in event.speakers" :key="`${speaker.firstName} ${speaker.firstName}`">
+                  <button
+                    v-if="speaker.hasPhoto"
+                    :id="`btn-${speaker.firstName}-${speaker.lastName}-${event.id}`"
+                    @click="openSpeakerInfoModal(event.speakers, `btn-${speaker.firstName}-${speaker.lastName}-${event.id}`)">
+                    <img :src="`images/speakers/${speaker.photoUrl}.jpg`"
+                        :alt="`Portrait of ${speaker.firstName} ${speaker.lastName}`"/>
+                  </button>
+                </template>
+              </div>
+
+              <div v-if="event.title.toLowerCase() === 'lunch break'" class="sitnl-agenda-slot-illustration">
+                <img src="images/lunch.svg" alt="Illustration of a meal"/>
+              </div>
+
+              <div v-if="event.title.toLowerCase().startsWith('break')" class="sitnl-agenda-slot-illustration">
+                <img src="images/coffee.svg" alt="Illustration of a cup of coffee"/>
+              </div>
+
+              <div v-if="event.title.toLowerCase() === 'afterparty'" class="sitnl-agenda-slot-illustration">
+                <img src="images/drinks.svg" alt="Illustration of a bottle of wine with a glass"/>
+              </div>
+
+            </div>
+
+            <p class="sitnl-agenda-slot-speakers" v-if="event.speakers.length > 0">
+              <template v-for="(speaker, index) in event.speakers" :key="`${speaker.firstName} ${speaker.firstName}`">
+                <span> {{speaker.firstName}} {{speaker.lastName}} (<span v-html="speaker.company"></span>)</span><span v-if="index != event.speakers.length - 1">, </span>
+              </template>
+            </p>
+
+            <p class="sitnl-agenda-slot-description" v-html="event.description"></p>
+
+            <template v-if="event.presentationLinks.length > 0">
+              <template v-if="!(event.presentationLinks.length == 1 && event.presentationLinks[0].linkType.toLowerCase() == 'feedback')">
+                <ul class="sitnl-agenda-slot-links">
+                  <template v-for="link in event.presentationLinks" :key="link.linkType">
+                    <li v-if="link.linkType.toLowerCase() !== 'feedback'">
+                      <a :href="link.url" class="sitnl-agenda-slot-linkitem" target="_blank" hreflang="en" rel="noopener noreferrer">{{link.linkType}}</a>
+                    </li>
+                  </template>
+
+                  <li class="livestream" v-if="event.isLive">
+                    <a href="#" class="sitnl-agenda-slot-linkitem">Livestream</a>
+                  </li>
+                </ul>
+              </template>
+            </template>
+          </li>
+        </ol>
+
+        <!-- Speaker Modal -->
+        <div
+          id="speaker-modal"
+          ref="speakerModal"
+          aria-hidden="true"
+          tabindex="-1"
+          aria-modal="true"
+          class="sitnl-agenda-modal-backdrop"
+          style="display: none"
+          @keydown.esc="closeSpeakerInfoModal"
+          @click.self="closeSpeakerInfoModal"
+          v-cloak
+        >
+          <div
+            class="sitnl-agenda-modal"
+            role="document"
+            aria-labelledby="speaker-dialog-title"
+            aria-describedby="speaker-dialog-description"
+            tabindex="-1"
+            ref="speakerModalContent"
+          >
+
+            <h2 class="sr-only" id="speaker-dialog-title">
+              Detailed Info about
+              <template v-for="speaker in activeSpeakers" :key="`${speaker.firstName} ${speaker.firstName}`">
+                {{speaker.firstName}} {{speaker.lastName}}
+              </template>
+            </h2>
+
+            <p class="sr-only" id="speaker-dialog-description">
+              <template v-for="speaker in activeSpeakers" :key="`${speaker.firstName} ${speaker.firstName}`">
+                Speaker's name: {{speaker.firstName}} {{speaker.lastName}}
+                <span v-if="speaker.company">Speaker's company: {{speaker.company}}</span>
+                Speaker's bio: {{speaker.bio}}
+              </template>
+            </p>
+
+            <button
+              aria-label="Close Dialog"
+              @click="closeSpeakerInfoModal"
+              ref="close"
+              v-on:keydown.tab.prevent="focusTrapModal($event)"
+            >
+              ✕
+            </button>
+
+            <div
+              v-for="(speaker, index) in activeSpeakers"
+              class="sitnl-agenda-modal-content-container"
+              :key="index"
+            >
+              <figure>
+                <img
+                  :src="`images/speakers/${speaker.photoUrl}.jpg`"
+                  :alt="`Portrait of ${speaker.firstName} ${speaker.lastName}`"
+                />
+              </figure>
+              <article>
+                <header>
+                  <div>
+                    <h3 class="">
+                      {{speaker.firstName}} {{speaker.lastName}}
+                    </h3>
+                    <p v-if="speaker.company" v-html="speaker.company"></p>
+                  </div>
+                </header>
+                <p class="" v-if="speaker.bio">
+                  {{speaker.bio | formatText }}
+                </p>
+                <ul class="sitnl-speakers-socials" v-if="speaker.githubUrl || speaker.linkedInUrl || speaker.twitterHandle || speaker.mastodonHandle || speaker.blueskyHandle">
+                  <li v-if="speaker.githubUrl">
+                    <a
+                      :href="speaker.githubUrl"
+                      rel="nofollow"
+                      target="_blank"
+                      :ref="`github ${speaker.firstName} ${speaker.lastName}`"
+                      :aria-label="`Github profile of ${speaker.firstName} ${speaker.lastName}`"
+                      v-on:keydown.tab.prevent="focusTrapModal($event)">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="images/icons/sprite.svg#github"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li v-if="speaker.linkedInUrl">
+                    <a
+                      :href="speaker.linkedInUrl"
+                      rel="nofollow"
+                      target="_blank"
+                      :ref="`linkedin ${speaker.firstName} ${speaker.lastName}`"
+                      :aria-label="`Linkedin profile of ${speaker.firstName} ${speaker.lastName}`"
+                      v-on:keydown.tab.prevent="focusTrapModal($event)">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="images/icons/sprite.svg#linkedin"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li v-if="speaker.twitterHandle">
+                    <a
+                      :href="speaker.twitterHandle"
+                      rel="nofollow" target="_blank"
+                      :ref="`twitter ${speaker.firstName} ${speaker.lastName}`"
+                      :aria-label="`Twitter profile of ${speaker.firstName} ${speaker.lastName}`"
+                      v-on:keydown.tab.prevent="focusTrapModal($event)">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="images/icons/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li v-if="speaker.mastodonHandle">
+                    <a
+                      :href="speaker.mastodonHandle"
+                      rel="nofollow" target="_blank"
+                      :ref="`mastodon ${speaker.firstName} ${speaker.lastName}`"
+                      :aria-label="`Mastodon profile of ${speaker.firstName} ${speaker.lastName}`"
+                      v-on:keydown.tab.prevent="focusTrapModal($event)">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="images/icons/sprite.svg#mastodon"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li v-if="speaker.blueskyHandle">
+                    <a
+                      :href="speaker.blueskyHandle"
+                      rel="nofollow" target="_blank"
+                      :ref="`bluesky ${speaker.firstName} ${speaker.lastName}`"
+                      :aria-label="`Bluesky profile of ${speaker.firstName} ${speaker.lastName}`"
+                      v-on:keydown.tab.prevent="focusTrapModal($event)">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="images/icons/sprite.svg#bluesky"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSORS SECTION -->
+    <section class="">
+      <div class="sitnl-wrap">
+
+        <div class="sitnl-box">
+
+
+          <div class="sitnl-box-flex sitnl-box-flex-inverted">
+
+            <img aria-hidden="true" class="sitnl-illustration" src="images/handshake.svg" alt="Illustration of a handshake" />
+
+            <div class="contents">
+
+              <h2>
+                <span>Our awesome </span>Sponsors
+              </h2>
+
+              <p>
+                We couldn’t do sitnl without our amazing sponsors! They’re the ones who make this conference possible. Their incredible support allows us to keep the event free for everyone.
+              </p>
+
+            </div>
+          </div>
+
+          <div class="sitnl-sponsors sitnl-box-flex sitnl-box-flex-column-center">
+            <ul class="sitnl-sponsors-logos">
+              <li v-for="sponsor in this.sponsorLineup" :key="sponsor.id" v-cloak>
+                <a :href="`${sponsor.website}`" rel="external nofollow" :aria-label="`${sponsor.name}`" hreflang="en" target="_blank">
+                  <svg 
+                    v-if="sponsor.logo.startsWith('sprite.svg')"
+                    aria-hidden="true" 
+                    :class="`${sponsor.logo.split('#')[1]}`">
+                    <use 
+                      :xlink:href="`images/sponsors/${sponsor.logo}`"
+                      :id="`${sponsor.logo.split('#')[1]}`"></use>
+                  </svg>
+                  <img 
+                    v-else
+                    :src="`images/sponsors/${sponsor.logo}`"
+                    :alt="`Logo of ${sponsor.name}`"
+                    style="max-width:300px;max-height:100px;height:auto;width:auto"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sitnl-sponsors-cta sitnl-box--text">
+            <p>Want to support #sitNL as well?</p>
+
+            <a href="sponsors.html" class="sitnl-btn">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="images/icons/sprite.svg#info"></use>
+              </svg>
+              Get all the details
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="sitnl-wrap">
+      <ul class="sitnl-social-links">
+        <li>
+          <a href="https://x.com/search?q=%23sitNL" target="_blank" hreflang="en" rel="noopener noreferrer">
+            <svg class="icon twitter" aria-hidden="true">
+              <use xlink:href="images/icons/sprite.svg#twitter"></use>
+            </svg>
+            stay updated
+          </a>
+        </li>
+        <li>
+          <a href="mailto:info@sitnl.nl?subject=[sitnl 2024] Question" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="images/icons/sprite.svg#mail"></use>
+            </svg>
+            reach out to us
+          </a>
+        </li>
+        <li>
+          <a href="codeofconduct.html" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="images/icons/sprite.svg#book"></use>
+            </svg>
+            Code of Conduct
+          </a>
+        </li>
+      </ul>
+      <div class="sitnl-footer-container">
+        <p class="copyright">© 2024 SAP Inside Track Netherlands</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+  <script src="./js/luxon.min.js"></script>
+  <script src="./js/agenda.js"></script>
+  <script src="./js/sponsors.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/a11y-dialog.min.js"></script>
+
+</body>
+</html>

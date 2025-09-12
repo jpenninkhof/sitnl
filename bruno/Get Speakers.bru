@@ -1,0 +1,23 @@
+meta {
+  name: Get Speakers
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://sitnl.cfapps.eu12.hana.ondemand.com/api/speaker
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: jan.penninkhof
+  password: 5gp7d1qv
+}
+
+script:pre-request {
+  const cookie = bru.getVar("cookie");
+  if(cookie) {
+    req.setHeader("Cookie", cookie)
+  }
+}
