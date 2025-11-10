@@ -115,6 +115,7 @@ var main = new Vue({
         let start = session.startTime;
         let end = session.endTime;
 
+        if (start === undefined) start = "00:00";
         let tempStart = start.substring(0, start.indexOf(":"));
         let tempEnd = end.substring(0, end.indexOf(":"));
 
