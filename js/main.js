@@ -114,10 +114,10 @@ var main = new Vue({
 
         let start = session.startTime;
         let end = session.endTime;
+        if (location === undefined) location = "";
 
         if (start === undefined) start = "00:00";
         if (end === undefined) end = "00:00";
-        if (location === undefined) location = "";
 
         let tempStart = start.substring(0, start.indexOf(":"));
         let tempEnd = end.substring(0, end.indexOf(":"));
@@ -130,11 +130,11 @@ var main = new Vue({
           end = "0" + end;
         }
 
-        let newStartTime = "2025-06-05T" + start + ":00.000+02:00";
-        let newEndTime = "2025-06-05T" + end + ":00.000+02:00";
+        let newStartTime = "2025-11-29T" + start + ":00.000+02:00";
+        let newEndTime = "2025-11-29T" + end + ":00.000+02:00";
 
         if (session.title === "Lunch") {
-          newStartTime = "2025-06-05T" + start + ":30.000+02:00";
+          newStartTime = "2025-11-29T" + start + ":30.000+02:00";
         }
 
         let timeNow = new Date().toISOString();
@@ -155,8 +155,8 @@ var main = new Vue({
       });
 
       const sortedScheduleTemp = tempLineUp.sort((a, b) =>
-      luxon.DateTime.fromISO(a.startTime) -
-      luxon.DateTime.fromISO(b.startTime) || a.location.localeCompare(b.location)
+        luxon.DateTime.fromISO(a.startTime) -
+        luxon.DateTime.fromISO(b.startTime) || a.location.localeCompare(b.location)
       );
 
       this.expertCornerLineupUnsorted = sortedScheduleTemp.filter(
@@ -308,9 +308,9 @@ var main = new Vue({
           return ''
       }
 
-      let description = "Dear friend, \n\nWe are thrilled to announce that UI5con 2025 will be held on June 5, 2025. This event is the highlight of the year for developers working with UI5, and we have an exciting lineup of keynotes and sessions planned for you.\n\nFor those eager to join us in person at St. Leon-Rot, Germany, it's important to note that seats for UI5con 2025 are limited. To secure your spot, registration will be required. Stay updated by regularly visiting our conference homepage or following us on our social media channels, so you don't miss the registration start date.\n\nCan't make it to St. Leon-Rot? Don't worry, we've got you covered! UI5con 2025 will also feature a livestream on the OpenUI5 YouTube channel, showcasing selected sessions. This way, you won't miss out on the valuable insights and knowledge shared by our esteemed speakers. Block this date in your calendar, as you won't want to miss the opportunity to learn from the best in the industry.\n\nStay tuned for more updates and exciting announcements as we get closer to UI5con 2025. We look forward to seeing you there, either in person or virtually!\n\nPlease save the following details:\nDate: 05/06/2025 \nLocation: SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany) \n\nConference website: https://openui5.org/ui5con/germany2025"
+      let description = "Dear friend, \n\nWe are thrilled to announce that SAP Inside Track Netherlands 2025 will be held on November 29, 2025 . This event is the highlight of the year for developers working with UI5, and we have an exciting lineup of keynotes and sessions planned for you.\n\nFor those eager to join us in person at St. Leon-Rot, Germany, it's important to note that seats for SAP Inside Track Netherlands 2025 are limited. To secure your spot, registration will be required. Stay updated by regularly visiting our conference homepage or following us on our social media channels, so you don't miss the registration start date.\n\nCan't make it to St. Leon-Rot? Don't worry, we've got you covered! SAP Inside Track Netherlands 2025 will also feature a livestream on the OpenUI5 YouTube channel, showcasing selected sessions. This way, you won't miss out on the valuable insights and knowledge shared by our esteemed speakers. Block this date in your calendar, as you won't want to miss the opportunity to learn from the best in the industry.\n\nStay tuned for more updates and exciting announcements as we get closer to SAP Inside Track Netherlands 2025. We look forward to seeing you there, either in person or virtually!\n\nPlease save the following details:\nDate: 05/06/2025 \nLocation: SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany) \n\nConference website: https://openui5.org/ui5con/germany2025"
 
-      let descriptionGoogle = `Dear friend, <br><br>We are thrilled to announce that UI5con 2025 will be held on June 5, 2025. This event is the highlight of the year for developers working with UI5, and we have an exciting lineup of keynotes and sessions planned for you.<br><br>For those eager to join us in person at St. Leon-Rot, Germany, it's important to note that seats for UI5con 2025 are limited. To secure your spot, registration will be required. Stay updated by regularly visiting our conference homepage or following us on our social media channels, so you don't miss the registration start date.<br><br>Can't make it to St. Leon-Rot? Don't worry, we've got you covered! UI5con 2025 will also feature a livestream on the OpenUI5 YouTube channel, showcasing selected sessions. This way, you won't miss out on the valuable insights and knowledge shared by our esteemed speakers. Block this date in your calendar, as you won't want to miss the opportunity to learn from the best in the industry.<br><br>Stay tuned for more updates and exciting announcements as we get closer to UI5con 2025. We look forward to seeing you there, either in person or virtually!<br><br>Please save the following details:<br>Date: 05/06/2025<br>Location: SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany) <br><br>Conference website: <a href="https://openui5.org/ui5con/germany2025/" target="_blank">https://openui5.org/ui5con/germany2025/</a>`
+      let descriptionGoogle = `Dear friend, <br><br>We are thrilled to announce that SAP Inside Track Netherlands 2025 will be held on November 29, 2025 . This event is the highlight of the year for developers working with UI5, and we have an exciting lineup of keynotes and sessions planned for you.<br><br>For those eager to join us in person at St. Leon-Rot, Germany, it's important to note that seats for SAP Inside Track Netherlands 2025 are limited. To secure your spot, registration will be required. Stay updated by regularly visiting our conference homepage or following us on our social media channels, so you don't miss the registration start date.<br><br>Can't make it to St. Leon-Rot? Don't worry, we've got you covered! SAP Inside Track Netherlands 2025 will also feature a livestream on the OpenUI5 YouTube channel, showcasing selected sessions. This way, you won't miss out on the valuable insights and knowledge shared by our esteemed speakers. Block this date in your calendar, as you won't want to miss the opportunity to learn from the best in the industry.<br><br>Stay tuned for more updates and exciting announcements as we get closer to SAP Inside Track Netherlands 2025. We look forward to seeing you there, either in person or virtually!<br><br>Please save the following details:<br>Date: 05/06/2025<br>Location: SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany) <br><br>Conference website: <a href="https://openui5.org/ui5con/germany2025/" target="_blank">https://openui5.org/ui5con/germany2025/</a>`
 
 
       let cal = [
@@ -319,8 +319,8 @@ var main = new Vue({
         'BEGIN:VEVENT',
         'DTSTART:' + calendarStartDate,
         'DTEND:' + calendarEndDate,
-        'SUMMARY:' + 'Save the Date: UI5con 2025',
-        'LOCATION:' + 'SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany)',
+        'SUMMARY:' + 'Save the Date: SAP Inside Track Netherlands 2025',
+        'LOCATION:' + 'SAP Nederland, Amerikastraat 10, 5232 BE \'s-Hertogenbosch (The Netherlands)',
         'DESCRIPTION:' + removeForbiddenCharachtersOutlook(description),
         'UID:' + '1',
         'END:VEVENT',
@@ -333,10 +333,10 @@ var main = new Vue({
             google: encodeURI([
               'https://www.google.com/calendar/render',
               '?action=TEMPLATE',
-              '&text=' + 'Save the Date: UI5con 2025',
+              '&text=' + 'Save the Date: SAP Inside Track Netherlands 2025',
               '&dates=' + calendarStartDate ,
               '/' + calendarEndDate,
-              '&location='+'SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany)',
+              '&location='+'SAP Nederland, Amerikastraat 10, 5232 BE \'s-Hertogenbosch (The Netherlands)',
               '&details=' + removeForbiddenCharachters(descriptionGoogle),
               '&sprop=&sprop=name:'
             ].join('')),
@@ -344,10 +344,10 @@ var main = new Vue({
               'https://outlook.office365.com/owa/',
               '?path=/calendar/action/compose',
               '&rru=addevent',
-              '&subject=' + 'Save the Date: UI5con 2025',
+              '&subject=' + 'Save the Date: SAP Inside Track Netherlands 2025',
               '&startdt=' + officeStartDate,
               '&enddt=' + officeEndDate,
-              '&location=' + 'SAP SE (ROT03), SAP-Allee 27, 68789 St. Leon-Rot (Germany)',
+              '&location=' + 'SAP Nederland, Amerikastraat 10, 5232 BE \'s-Hertogenbosch (The Netherlands)',
               '&body=' + removeForbiddenCharachters(descriptionGoogle)
             ].join('')),
             ics: encodeURI('data:text/calendar;charset=utf8,' + cal)
