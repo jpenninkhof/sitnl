@@ -135,7 +135,7 @@
                     </a>
                   </li>
                   <li v-if="sponsor.blueskyHandle">
-                    <a :href="`https://bsky.app/profile/${sponsor.blueskyHandle}`" :aria-label="`Bluesky profile of ${sponsor.name}`" rel="nofollow" target="_blank">
+                    <a :href="`${sponsor.blueskyHandle}`" :aria-label="`Bluesky profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#bluesky"></use>
                       </svg>
