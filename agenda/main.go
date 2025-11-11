@@ -315,7 +315,7 @@ func cleanupProposal(proposals map[string]interface{}, speakers []interface{}) {
 					for i := 0; i < len(speakers); i++ {
 						if speakerMap, ok := speakers[i].(map[string]interface{}); ok {
 							if speakerMap["hash"] == hash {
-								copyWhenExists(speakerMap, propSpeakerMap, "twitterHandle")
+								copyWhenExists(speakerMap, propSpeakerMap, "blueskyHandle")
 								copyWhenExists(speakerMap, propSpeakerMap, "blueskyHandle")
 								copyWhenExists(speakerMap, propSpeakerMap, "mastodonHandle")
 								copyWhenExists(speakerMap, propSpeakerMap, "linkedInUrl")

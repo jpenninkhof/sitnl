@@ -95,8 +95,8 @@ var main = new Vue({
     formatLineup() {
       const tempLineUp = this.lineup.map((session) => {
         session.speakers.map((speaker) => {
-          if(speaker.twitterHandle) {
-            speaker.twitterHandle = this.formatTwitterLink(speaker.twitterHandle);
+          if(speaker.blueskyHandle) {
+            speaker.blueskyHandle = this.formatTwitterLink(speaker.blueskyHandle);
           }
 
           if(speaker.linkedInUrl) {
@@ -398,8 +398,8 @@ var main = new Vue({
       const formattedArray = newArray.map(speaker => {
         const fullName = speaker.firstName + ' ' + speaker.lastName;
 
-        if(speaker.twitterHandle) {
-          speaker.twitterHandle = this.formatTwitterLink(speaker.twitterHandle);
+        if(speaker.blueskyHandle) {
+          speaker.blueskyHandle = this.formatTwitterLink(speaker.blueskyHandle);
         }
 
         if(speaker.linkedInUrl) {
