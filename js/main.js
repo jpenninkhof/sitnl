@@ -199,7 +199,7 @@ var main = new Vue({
         blueskyHandle: sponsor.blueskyHandle
           ? `https://bsky.app/profile/${entry.blueskyHandle}`
           : sponsor.blueskyHandle
-      });
+      }));
     },
     groupExpertCornerTopics() {
       this.expertCornerLineupUnsorted.forEach((corner) => {
