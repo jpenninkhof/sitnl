@@ -194,7 +194,12 @@ var main = new Vue({
       }
     },
     formatSponsorLineup() {
-      return sponsorLineupJson;
+      return sponsorLineupJson.map(sponsor => ({
+        ...sponsor,
+        blueskyHandle: sponsor.blueskyHandle
+          ? `https://bsky.app/profile/${entry.blueskyHandle}`
+          : sponsor.blueskyHandle
+      });
     },
     groupExpertCornerTopics() {
       this.expertCornerLineupUnsorted.forEach((corner) => {
