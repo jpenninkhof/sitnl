@@ -47,7 +47,7 @@ var main = new Vue({
   mounted() {
     this.lineup = proposalLineupJson;
     this.formattedLineup = this.formatLineup();
-    this.sponsorLineup = sponsorLineupJson;
+    this.sponsorLineup = this.formatSponsorLineup();
     this.groupExpertCornerTopics();
 
     this.updateLiveSession();
@@ -192,6 +192,9 @@ var main = new Vue({
       } else {
         return sortedSchedule;
       }
+    },
+    formatSponsorLineup() {
+      return sponsorLineupJson;
     },
     groupExpertCornerTopics() {
       this.expertCornerLineupUnsorted.forEach((corner) => {
