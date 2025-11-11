@@ -197,7 +197,7 @@ var main = new Vue({
       return sponsorLineupJson.map(sponsor => ({
         ...sponsor,
         blueskyHandle: sponsor.blueskyHandle
-          ? `https://bsky.app/profile/${entry.blueskyHandle}`
+          ? `https://bsky.app/profile/${sponsor.blueskyHandle}`
           : sponsor.blueskyHandle
       }));
     },
