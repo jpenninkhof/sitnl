@@ -96,7 +96,7 @@ var main = new Vue({
       const tempLineUp = this.lineup.map((session) => {
         session.speakers.map((speaker) => {
           if(speaker.blueskyHandle) {
-            speaker.blueskyHandle = this.formatTwitterLink(speaker.blueskyHandle);
+            speaker.blueskyHandle = this.formatBlueskyLink(speaker.blueskyHandle);
           }
 
           if(speaker.linkedInUrl) {
@@ -221,7 +221,7 @@ var main = new Vue({
 
       for (const key in this.$refs) {
         if (
-          key.startsWith("twitter") ||
+          key.startsWith("bluesky") ||
           key.startsWith("github") ||
           key.startsWith("linkedin") ||
           key.startsWith("mastodon") ||
@@ -238,7 +238,7 @@ var main = new Vue({
 
       for (const key in this.$refs) {
         if (
-          key.startsWith("twitter") ||
+          key.startsWith("bluesky") ||
           key.startsWith("github") ||
           key.startsWith("linkedin") ||
           key.startsWith("mastodon") ||
@@ -356,9 +356,9 @@ var main = new Vue({
       }
 
     },
-    formatTwitterLink(handle) {
+    formatBlueskyLink(handle) {
       if (!handle.startsWith('https:')) {
-        return "https://twitter.com/" + handle;
+        return "https://bsky.app/profile/" + handle;
       }
     },
     formatLinkedInLink(handle) {
@@ -399,7 +399,7 @@ var main = new Vue({
         const fullName = speaker.firstName + ' ' + speaker.lastName;
 
         if(speaker.blueskyHandle) {
-          speaker.blueskyHandle = this.formatTwitterLink(speaker.blueskyHandle);
+          speaker.blueskyHandle = this.formatBlueskyLink(speaker.blueskyHandle);
         }
 
         if(speaker.linkedInUrl) {
