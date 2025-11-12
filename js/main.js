@@ -191,7 +191,10 @@ var main = new Vue({
       return sponsorLineupJson.map(sponsor => ({
         ...sponsor,
         blueskyHandle: this.formatBlueskyLink(sponsor.blueskyHandle),
-        linkedInHandle: this.formatLinkedInLink(sponsor.linkedInHandle, true)
+        linkedInHandle: this.formatLinkedInLink(sponsor.linkedInHandle, true),
+        youtubeHandle: this.formatYoutubeLink(sponsor.youtubeHandle),
+        facebookHandle: this.formatFacebookLink(sponsor.facebookHandle),
+        instagramHandle: this.formatInstagramLink(sponsor.instagramHandle)
       }));
     },
     groupExpertCornerTopics() {
@@ -362,6 +365,27 @@ var main = new Vue({
         return handle.startsWith('https:') ?
           handle :
           "https://bsky.app/profile/" + handle.replace('@', '');
+      }
+    },
+    formatYoutubeLink(handle) {
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle :
+          "https://www.youtube.com/" + handle;
+      }
+    },
+    formatFacebookLink(handle) {
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle :
+          "https://facebook.com/" + handle;
+      }
+    },
+    formatInstagramLink(handle) {
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle :
+          "https://instagram.com/" + handle;
       }
     },
     formatLinkedInLink(handle, isCompany = false) {

@@ -142,21 +142,21 @@
                     </a>
                   </li>
                   <li v-if="sponsor.instagramHandle">
-                    <a :href="`https://www.instagram.com/${sponsor.instagramHandle}/`" :aria-label="`Instagram profile of ${sponsor.name}`" rel="nofollow" target="_blank">
+                    <a :href="`${sponsor.instagramHandle}`" :aria-label="`Instagram profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#insta"></use>
                       </svg>
                     </a>
                   </li>
                   <li v-if="sponsor.facebookHandle">
-                    <a :href="`https://www.facebook.com/${sponsor.facebookHandle}`" :aria-label="`Facebook page of ${sponsor.name}`" rel="nofollow" target="_blank">
+                    <a :href="`${sponsor.facebookHandle}`" :aria-label="`Facebook page of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#facebook"></use>
                       </svg>
                     </a>
                   </li>
                   <li v-if="sponsor.youtubeHandle">
-                    <a :href="`https://www.youtube.com/@${sponsor.youtubeHandle}`" :aria-label="`Youtube profile of ${sponsor.name}`" rel="nofollow" target="_blank">
+                    <a :href="`${sponsor.youtubeHandle}`" :aria-label="`Youtube profile of ${sponsor.name}`" rel="nofollow" target="_blank">
                       <svg class="icon" aria-hidden="true">
                         <use xlink:href="images/icons/sprite.svg#youtube"></use>
                       </svg>
