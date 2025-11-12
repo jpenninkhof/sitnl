@@ -374,10 +374,10 @@ var main = new Vue({
     formatMastodonLink(handle) {
       if (handle !== undefined) {
         return handle.startsWith('https:') ?
+          handle :
           handle.includes('@saptodon.org') ?
             'https://saptodon.org/' + handle.replace('@saptodon.org', '') :
-            'https://saptodon.org/' + handle :
-          handle
+            'https://saptodon.org/' + handle
       }
     },
     shuffleSpeakersArray(array) {
