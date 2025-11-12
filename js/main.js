@@ -196,9 +196,7 @@ var main = new Vue({
     formatSponsorLineup() {
       return sponsorLineupJson.map(sponsor => ({
         ...sponsor,
-        blueskyHandle: sponsor.blueskyHandle
-          ? `https://bsky.app/profile/${sponsor.blueskyHandle}`
-          : sponsor.blueskyHandle
+        blueskyHandle: this.formatBlueskyLink(speaker.blueskyHandle)
       }));
     },
     groupExpertCornerTopics() {
