@@ -361,50 +361,44 @@ var main = new Vue({
 
     },
     formatBlueskyLink(handle) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          "https://bsky.app/profile/" + handle.replace('@', '');
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        "https://bsky.app/profile/" + handle.replace('@', '');
     },
     formatYoutubeLink(handle) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          "https://www.youtube.com/" + handle;
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        "https://www.youtube.com/" + handle;
     },
     formatFacebookLink(handle) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          "https://facebook.com/" + handle;
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        "https://facebook.com/" + handle;
     },
     formatInstagramLink(handle) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          "https://instagram.com/" + handle;
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        "https://instagram.com/" + handle;
     },
     formatLinkedInLink(handle, isCompany = false) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          isCompany ?
-            "https://www.linkedin.com/company/" + handle :
-            "https://www.linkedin.com/in/" + handle;
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        isCompany ?
+          "https://www.linkedin.com/company/" + handle :
+          "https://www.linkedin.com/in/" + handle;
     },
     formatMastodonLink(handle) {
-      if (handle !== undefined) {
-        return handle.startsWith('https:') ?
-          handle :
-          handle.includes('@saptodon.org') ?
-            'https://saptodon.org/' + handle.replace('@saptodon.org', '') :
-            'https://saptodon.org/' + handle
-      }
+      if (!handle) return undefined;
+      return handle.startsWith('https:') ?
+        handle :
+        handle.includes('@saptodon.org') ?
+          'https://saptodon.org/' + handle.replace('@saptodon.org', '') :
+          'https://saptodon.org/' + handle
     },
     shuffleSpeakersArray(array) {
       const newArray = [...array]
