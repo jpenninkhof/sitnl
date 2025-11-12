@@ -95,18 +95,12 @@ var main = new Vue({
     formatLineup() {
       const tempLineUp = this.lineup.map((session) => {
         session.speakers.map((speaker) => {
-          if(speaker.blueskyHandle) {
-            speaker.blueskyHandle = this.formatBlueskyLink(speaker.blueskyHandle);
-          }
-
           if(speaker.linkedInUrl) {
             speaker.linkedInUrl = this.formatLinkedInLink(speaker.linkedInUrl);
           }
-
           if(speaker.mastodonHandle) {
             speaker.mastodonHandle = this.formatMastodonLink(speaker.mastodonHandle);
           }
-
           if(speaker.blueskyHandle) {
             speaker.blueskyHandle = this.formatBlueskyLink(speaker.blueskyHandle);
           }
@@ -364,27 +358,26 @@ var main = new Vue({
 
     },
     formatBlueskyLink(handle) {
-      if (!handle.startsWith('https:')) {
-        return "https://bsky.app/profile/" + handle;
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle :
+          "https://bsky.app/profile/" + handle.replace('@', '');
       }
     },
     formatLinkedInLink(handle) {
-      if (!handle.startsWith('https:')) {
-        return "https://www.linkedin.com/in/" + handle;
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle :
+          "https://www.linkedin.com/in/" + handle;
       }
     },
     formatMastodonLink(handle) {
-      if(!handle.startsWith('https:')) {
-        if (handle.includes('@saptodon.org')) {
-          return 'https://saptodon.org/' + handle.replace('@saptodon.org', '');
-        }
-
-        return 'https://saptodon.org/' + handle;
-      }
-    },
-    formatBlueskyLink(handle) {
-      if(!handle.startsWith('https:')) {
-        return 'https://bsky.app/profile/' + handle.replace('@', '');
+      if (handle !== undefined) {
+        return handle.startsWith('https:') ?
+          handle.includes('@saptodon.org') ?
+            'https://saptodon.org/' + handle.replace('@saptodon.org', '') :
+            'https://saptodon.org/' + handle :
+          handle
       }
     },
     shuffleSpeakersArray(array) {
