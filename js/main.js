@@ -191,7 +191,7 @@ var main = new Vue({
       return sponsorLineupJson.map(sponsor => ({
         ...sponsor,
         blueskyHandle: this.formatBlueskyLink(sponsor.blueskyHandle),
-        linkedInHandle: this.formatLinkedInLink(sponsor.linkedInHandle)
+        linkedInHandle: this.formatLinkedInLink(sponsor.linkedInHandle, true)
       }));
     },
     groupExpertCornerTopics() {
@@ -364,11 +364,13 @@ var main = new Vue({
           "https://bsky.app/profile/" + handle.replace('@', '');
       }
     },
-    formatLinkedInLink(handle) {
+    formatLinkedInLink(handle, isCompany = false) {
       if (handle !== undefined) {
         return handle.startsWith('https:') ?
           handle :
-          "https://www.linkedin.com/in/" + handle;
+          isCompany ?
+            "https://www.linkedin.com/company/" + handle :
+            "https://www.linkedin.com/in/" + handle;
       }
     },
     formatMastodonLink(handle) {
