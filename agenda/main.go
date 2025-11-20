@@ -57,7 +57,7 @@ func main() {
 
 	// Clean up proposals
 	proposals = cleanupProposals(proposals, speakers)
-//	cleanupProposals(proposals, speakers)
+	//	cleanupProposals(proposals, speakers)
 	writeAgenda(proposals)
 
 	// Fetch and write agenda
@@ -277,38 +277,36 @@ func fetchJson(url string, cookies []*http.Cookie) ([]interface{}, error) {
 }
 
 func cleanupProposals(proposals []interface{}, speakers []interface{}) []interface{} {
-    cleaned := make([]interface{}, 0, len(proposals))
+	cleaned := make([]interface{}, 0, len(proposals))
 
-    for _, p := range proposals {
-        proposal, ok := p.(map[string]interface{})
-        if !ok {
-            continue
-        }
+	for _, p := range proposals {
+		proposal, ok := p.(map[string]interface{})
+		if !ok {
+			continue
+		}
 
-        // Decide if this proposal is accepted.
-        // Adjust this logic if your "accepted" field is of another type.
-        accepted := false
-        if v, ok := proposal["accepted"]; ok {
-            switch val := v.(type) {
-            case bool:
-                accepted = val
-            case string:
-                // if your JSON stores "accepted", "rejected", etc.
-                accepted = val == "accepted"
-            }
-        }
+		// Decide if this proposal is accepted.
+		accepted := false
+		if v, ok := proposal["accepted"]; ok {
+			switch val := v.(type) {
+			case bool:
+				accepted = val
+			case string:
+				accepted = val == "accepted"
+			}
+		}
 
-        if !accepted {
-            // skip this proposal entirely
-            continue
-        }
+		if !accepted {
+			// skip this proposal entirely
+			continue
+		}
 
-        // Now clean up the accepted proposal
-        cleanupProposal(proposal, speakers)
-        cleaned = append(cleaned, proposal)
-    }
+		// Now clean up the accepted proposal
+		cleanupProposal(proposal, speakers)
+		cleaned = append(cleaned, proposal)
+	}
 
-    return cleaned
+	return cleaned
 }
 
 func cleanupProposalsOld(proposals []interface{}, speakers []interface{}) {
