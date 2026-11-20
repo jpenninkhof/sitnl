@@ -1,171 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Code of Conduct - SAP Inside Track Netherlands 2025</title>
-  <meta name="description"
-    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
-  <meta name="keywords"
-    content="sap, technology, development, bi, data management, integration, extensions, datasphere, sap build, abap, cap, ui5" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="SAP SE" />
-  <meta property="twitter:card" content="summary" />
-  <meta property="twitter:url" content="https://sitnl.nl/" />
-  <meta property="twitter:title" content="SAP Inside Track Netherlands 2025" />
-  <meta property="twitter:description"
-    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
-  <meta property="twitter:image" content="https://sitnl.nl/images/share.png" />
-  <meta property="og:title" content="#sitNL - November 29th, 2025" />
-  <meta property="og:description"
-    content="#sitNL is a Dutch community event where SAP users and enthusiasts gather to share knowledge and experiences about SAP technologies" />
-  <meta property="og:image" content="https://sitnl.nl/images/share.png" />
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
-  <link rel="icon" sizes="any" href="images/android-chrome-192x192.png" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code of conduct, SAP Inside Track Netherlands 2027</title>
+  <meta name="description" content="The SitNL code of conduct: how we treat each other at SAP Inside Track Netherlands, and who to contact when something goes wrong.">
+  <link rel="icon" type="image/svg+xml" href="assets/sitnl-2027-logo.svg">
+  <link rel="preload" href="assets/fonts/72-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/72-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* Same tokens as index.html, from design.md §3–§5 */
+    @font-face { font-family: "72"; src: url("assets/fonts/72-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "72"; src: url("assets/fonts/72-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 
-  <link rel="stylesheet" href="./css/common.css" />
-  <link rel="stylesheet" href="./css/modules.css" />
+    :root {
+      --bg-top: oklch(0.22 0.10 262);
+      --bg: oklch(0.27 0.15 277);
+      --bg-bottom: oklch(0.53 0.27 280);
+      --surface: oklch(0.37 0.22 275);
+      --line: oklch(0.59 0.235 285);
+      --lilac: oklch(0.74 0.15 298);
+      --ink: oklch(0.98 0.01 285);
+      --ink-soft: oklch(0.83 0.10 238);
+      --accent: oklch(0.79 0.17 71);
+      --on-accent: oklch(0.18 0.09 281);
+      --wrap: 72rem;
+      --gutter: 1.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "72", Arial, Helvetica, sans-serif; font-size: 1.0625rem; line-height: 1.6;
+      overflow-x: clip;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: 2px; transition: text-underline-offset 120ms; }
+    a:hover { text-underline-offset: 4px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+    .skip { position: absolute; left: var(--gutter); top: -4rem; background: var(--accent); color: var(--on-accent); padding: .5rem 1rem; border-radius: 999px; z-index: 10; }
+    .skip:focus { top: 1rem; }
+    .meta { color: var(--ink-soft); }
+
+    /* Header: the hero field, short */
+    .page-head { background: linear-gradient(in oklch 180deg, var(--bg-top), var(--bg) 70%, color-mix(in oklch, var(--bg) 70%, var(--bg-bottom))); padding-bottom: 4rem; }
+    .site-head { padding-block: 1.25rem; }
+    .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .brand img { width: 6.5rem; height: auto; }
+    .nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: 1.5rem; }
+    .nav a { display: inline-block; padding-block: .5rem; white-space: nowrap; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: 6px; transition: text-decoration-color 120ms, text-underline-offset 120ms; }
+    .nav a:hover { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+
+    .trio { display: inline-flex; gap: .5rem; align-items: center; margin: 3rem 0 1.5rem; }
+    .trio i { display: block; height: 1rem; border-radius: 999px; }
+    .trio i:nth-child(1) { width: 1rem; background: var(--accent); }
+    .trio i:nth-child(2) { width: 4.25rem; background: var(--line); }
+    .trio i:nth-child(3) { width: 1.75rem; background: var(--lilac); }
+    h1 { font-weight: 700; font-size: clamp(2.625rem, 6vw, 4.125rem); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.5rem; }
+    .lede { font-size: 1.3125rem; line-height: 1.5; max-width: 44ch; margin: 0; }
+
+    /* Body text */
+    .doc { padding-block: 4rem 6rem; }
+    .doc .wrap > * { max-width: 66ch; }
+    .doc h2 { font-weight: 700; font-size: clamp(1.6875rem, 3vw, 2.0625rem); line-height: 1.1; letter-spacing: -0.015em; margin: 3rem 0 1rem; }
+    .doc h2:first-child { margin-top: 0; }
+    .doc p { margin: 0 0 1em; }
+    .doc ul { margin: 0 0 1.5em; padding-left: 1.25em; }
+    .doc li { margin-bottom: .5em; }
+    .doc li::marker { color: var(--lilac); }
+    .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; margin-top: 3rem; }
+    .contact h2 { margin-top: 0; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: .875rem 1.5rem; border-radius: 999px; font: 700 1rem/1 "72", Arial, sans-serif; text-decoration: none; background: var(--accent); color: var(--on-accent); transition: background-color 120ms; }
+    .btn:hover { background: oklch(0.84 0.17 71); }
+
+    /* Footer */
+    .site-foot { background: var(--bg-top); border-top: 1px solid var(--surface); padding-block: 3rem; }
+    .site-foot ul { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .site-foot a { display: inline-block; padding-block: .5rem; }
+    .site-foot p { margin: 0 0 1em; }
+
+    @media (prefers-reduced-motion: reduce) { a, .nav a, .btn { transition: none; } }
+    @media (max-width: 48rem) { .nav ul { column-gap: 1rem; font-size: .9375rem; } }
+  </style>
 </head>
-
 <body>
-  <header class="sitnl-site-head sitnl-site-head--collapsed">
-    <div class="sitnl-wrap">
-      <nav class="sitnl-nav" aria-label="Main navigation">
-        <ul>
-          <li>
-            <a href="index.html" class="" aria-label="Home">
-              <span class="sr-only">Link to Home Page</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="sitnl-logo" viewBox="0 0 195 48" aria-hidden="true">
-                <text style="fill: rgb(255, 128, 0); font-family: Arial, sans-serif; font-size: 64px; font-weight: 700; white-space: pre;" x="0" y="46.871">#sitNL</text>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="sponsors.html">sponsoring</a>
-          </li>
-          <li>
-            <a href="speakerinfo.html">speaker infos</a>
-          </li>
-        </ul>
-      </nav>
+  <a class="skip" href="#main">Skip to content</a>
 
+  <header class="page-head">
+    <div class="site-head">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="SitNL 2027 home">
+          <img src="assets/sitnl-2027-logo.svg" alt="" width="104" height="58">
+        </a>
+        <nav class="nav" aria-label="Main">
+          <ul>
+            <li><a href="./#call-for-papers">call for papers</a></li>
+            <li><a href="./#getting-there">getting there</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="wrap">
+      <span class="trio" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h1>Code of conduct</h1>
+      <p class="lede">SitNL is a welcoming developer community with a friendly and inspiring reputation. We’d like to keep it that way, so we ask all members, attendees, organisers and sponsors to follow this code of conduct.</p>
     </div>
   </header>
 
-  <main>
-    <article>
-      <div class="sitnl-wrap">
-        <div class="sitnl-box sitnl-box--text">
-          <h2>
-            <span>Code of</span> conduct
-          </h2>
+  <main id="main" class="doc">
+    <div class="wrap">
+      <p>If you have questions about this code of conduct, contact any of the SitNL organisers.</p>
 
-          <p>sitnl is a welcoming developer community that maintains a friendly and inspiring reputation.
-            We’d like to keep it that way, which is why we ask all members, attendees, organizers and sponsors
-            to follow this code of conduct (CoC).</p>
+      <h2>Be nice to each other</h2>
+      <p>We trust that attendees will treat each other in a way that reflects the widely held view that diversity and friendliness are strengths of our community, to be celebrated and fostered.</p>
+      <p>Furthermore, we believe attendees have a right to:</p>
+      <ul>
+        <li>be treated with courtesy, dignity and respect;</li>
+        <li>be free from any form of discrimination, victimisation, harassment or bullying;</li>
+        <li>enjoy an environment free from unwelcome behaviour, inappropriate language and unsuitable imagery.</li>
+      </ul>
 
-          <p>If you have questions regarding this CoC, please contact any of sitnl organisers.</p>
+      <h2>Be professional and don’t spam</h2>
+      <p>Professional events are a great setting to showcase the work of the community. We encourage networking and business-related discussions, and we want the presentations to stay meaningful and interesting for everyone.</p>
+      <p>We therefore:</p>
+      <ul>
+        <li>only allow company marketing or recruiting activities at the event in line with our sponsor agreements;</li>
+        <li>ask that presentations, outside the official recruiting sessions, focus on SAP technology topics, not on recruitment.</li>
+      </ul>
+      <p>The organisers are happy to answer any questions about marketing or recruiting activities.</p>
 
-          <h3>Be nice to each other</h3>
+      <h2>Solving problems</h2>
+      <p>If problems covered by this code of conduct arise, contact one of the organisers directly. Any complaint will remain confidential, be taken seriously, investigated, and dealt with appropriately.</p>
+      <p>The SitNL organisers reserve the right to take any of the following actions in response to a complaint:</p>
+      <ul>
+        <li>The person concerned may be told to stop or change their behaviour, and a warning will be issued.</li>
+        <li>The person concerned may be warned that enforcement action may follow if the behaviour continues.</li>
+        <li>The person concerned may be asked to leave the venue immediately and may be prohibited from attending the rest of the event.</li>
+        <li>The incident may be reported to the local authorities.</li>
+      </ul>
 
-          <p>We trust that attendees will treat each other in a way that reflects the widely held view that diversity and
-            friendliness are strengths of our community to be celebrated and fostered.</p>
+      <section class="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>Emails to <a href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Code%20of%20conduct">info@sitnl.nl</a> are received by the code of conduct work group, which handles any conflicts.</p>
+        <a class="btn" href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Code%20of%20conduct">Email the work group</a>
+      </section>
 
-          <p>Furthermore, we believe attendees have a right to:</p>
-
-          <ul>
-            <li>be treated with courtesy, dignity and respect;</li>
-            <li>be free from any form of discrimination, victimization, harassment or bullying;</li>
-            <li>enjoy an environment free from unwelcome behavior, inappropriate language and unsuitable imagery.</li>
-          </ul>
-
-          <h3>Be professional and don’t spam</h3>
-
-          <p>Professional events are a great setting to showcase the work of the community and would like to encourage
-            networking and business related discussions, as well as keep the conference presentations meaningful and
-            interesting for everyone.</p>
-
-          <p>We therefore:</p>
-
-          <ul>
-            <li>only allow company marketing or recruiting related activities at the conference in accordance with our sponsor agreements;</li>
-            <li>request presentations - outside the official recruiting sessions - to focus on UI5 related topics, not on recruitment.</li>
-          </ul>
-
-          <p>Organizers will be happy to answer any questions related to marketing or recruiting activities.</p>
-
-          <h3>Solving problems</h3>
-
-          <p>If problems covered by this code of conduct arise, please contact one the organizers directly. Any complaint
-            will remain confidential, be taken seriously, investigated, and dealt with appropriately.</p>
-
-          <p>The sitnl organizers reserve the right to carry out any of the following actions relating to a
-            complaint:</p>
-
-          <ul>
-            <li>
-              The person concerned may be told to stop/modify his/her behavior appropriately and a warning will be issued.
-            </li>
-            <li>
-              The person concerned may be warned that enforcement action may be taken if the behavior continues.
-            </li>
-            <li>
-              The person concerned may be asked to leave the venue immediately and/or may be prohibited from continuing to attend the conference (without a refund).
-            </li>
-            <li>
-              The incident may be reported to the local authorities.
-            </li>
-          </ul>
-
-          <h3>Contacts</h3>
-
-          <p><a href="mailto:info@sitnl.nl?subject=[sitnl 2025] CoC Question" class="sitnl-dark-bgrd__link" rel="noopener noreferrer">info@sitnl.nl</a>
-              - Emails to this address will be received by the conference CoC work-group, which is in
-            charge of CoC conflict management.</p>
-
-          <p>This document is based on the <a href="https://web.archive.org/web/20150515012345/http://www.pyconuk.org/codeofconduct" class="sitnl-dark-bgrd__link" target="_blank" rel="noopener noreferrer">PyCon UK 2015 Code of Conduct</a> and released under a creative commons license.</p>
-
-        </div>
-      </div>
-    </article>
+      <p class="meta" style="margin-top: 3rem">This document is based on the <a href="https://web.archive.org/web/20150515012345/http://www.pyconuk.org/codeofconduct" rel="noopener">PyCon UK 2015 Code of Conduct</a> and released under a Creative Commons licence.</p>
+    </div>
   </main>
 
-  <footer>
-    <div class="sitnl-wrap">
-      <ul class="sitnl-social-links">
-        <li>
-          <a href="https://x.com/search?q=%23sitNL" target="_blank" hreflang="en" rel="noopener noreferrer">
-            <svg class="icon twitter" aria-hidden="true">
-              <use xlink:href="images/icons/sprite.svg#twitter"></use>
-            </svg>
-            stay updated
-          </a>
-        </li>
-        <li>
-          <a href="mailto:info@sitnl.nl?subject=[sitnl 2025] Question" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="images/icons/sprite.svg#mail"></use>
-            </svg>
-            reach out to us
-          </a>
-        </li>
-        <li>
-          <a href="codeofconduct.html" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="images/icons/sprite.svg#book"></use>
-            </svg>
-            Code of Conduct
-          </a>
-        </li>
+  <footer class="site-foot">
+    <div class="wrap">
+      <ul>
+        <li><a href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Question">Reach out to us</a></li>
+        <li><a href="codeofconduct.html" aria-current="page">Code of conduct</a></li>
       </ul>
-      <div class="sitnl-footer-container">
-        <p class="copyright">© 2025 SAP Inside Track Netherlands</p>
-      </div>
+      <p class="meta">Organised by volunteers from the Dutch SAP community. Venue: SAP Nederland, Amerikastraat 10, 5232 BE ’s-Hertogenbosch. Contact: <a href="mailto:info@sitnl.nl">info@sitnl.nl</a></p>
+      <p class="meta">© 2027 SAP Inside Track Netherlands</p>
     </div>
   </footer>
-
 </body>
-
 </html>

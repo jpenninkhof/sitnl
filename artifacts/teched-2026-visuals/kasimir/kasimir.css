@@ -1,0 +1,33 @@
+/* Kasimir video component. The navy clips are rendered on #001949 (top) -> #002869 (bottom),
+   which sits right next to --tx-navy, so a soft mask makes the square edges disappear. */
+.kasimir { position: relative; aspect-ratio: 1; width: min(100%, 420px); margin-inline: auto; }
+.kasimir--wide { aspect-ratio: 16 / 9; width: min(100%, 720px); }
+.kasimir video, .kasimir img { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+
+/* Navy clips: dissolve the edges into the section background */
+/* no background on the wrapper: only the masked video should be visible */
+.kasimir--blend video, .kasimir--blend img {
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 72%, transparent 100%);
+}
+.kasimir--blend.kasimir--wide video, .kasimir--blend.kasimir--wide img {
+  -webkit-mask-image: radial-gradient(60% 75% at 50% 50%, #000 70%, transparent 100%);
+          mask-image: radial-gradient(60% 75% at 50% 50%, #000 70%, transparent 100%);
+}
+
+/* Black clips (early bird, lofi): show them as a framed screen instead of blending */
+.kasimir--screen { background: #000; border-radius: var(--tx-radius-card, 20px); overflow: hidden;
+  border: 1px solid var(--tx-card-border, rgba(184,148,255,.28)); box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+
+.kasimir__caption { text-align: center; color: var(--tx-sky, #89D1FF); font-size: .875rem; margin-top: .5rem; }
+
+/* Easter egg: Kasimir peeks in from the bottom-right corner */
+.kasimir-peek { position: fixed; right: 1rem; bottom: -160px; width: 140px; height: 140px; border-radius: 50%;
+  overflow: hidden; cursor: pointer; z-index: 50; border: 2px solid var(--tx-teal, #67EDD5);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5); transition: bottom .6s cubic-bezier(.2,.9,.3,1.3); background: #001949; padding: 0; }
+.kasimir-peek.is-visible { bottom: 1rem; }
+.kasimir-peek video { width: 100%; height: 100%; object-fit: cover; transform: scale(1.6) translateY(8%); }
+.kasimir-peek__label { position: absolute; inset: auto 0 6px; text-align: center; font: 600 11px/1 var(--tx-font, sans-serif); color: #fff;
+  text-shadow: 0 1px 4px #000; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) { .kasimir-peek { transition: none; } }

@@ -1,0 +1,101 @@
+/* SitNL 2027 - design tokens derived from the TechEd 2026 keynote ("Build things that matter").
+   Drop into css/common.css (or import before it). Font: the site already ships 72 (72-Regular/Bold/Black.woff2). */
+
+:root {
+  /* Core palette (frequency-ordered from the deck) */
+  --tx-violet:        #5D36FF; /* primary brand violet, gradient end + accents */
+  --tx-violet-light:  #7858FF;
+  --tx-violet-deep:   #2C12AD;
+  --tx-indigo-numeral:#4D2FDF; /* giant background numerals */
+  --tx-navy:          #00144A; /* gradient start / darkest surface */
+  --tx-navy-ink:      #0E0537; /* text on light chips */
+  --tx-blue:          #1A98FF; /* pill / chip blue */
+  --tx-blue-sap:      #0070F2;
+  --tx-sky:           #89D1FF;
+  --tx-sky-pale:      #D1EFFF;
+  --tx-teal:          #67EDD5; /* accent: eyebrows, highlighted words, the "." */
+  --tx-pink:          #FF8BF0;
+  --tx-lilac:         #B894FF;
+  --tx-gold:          #F0AB00; /* SAP gold, use sparingly */
+  --tx-white:         #FFFFFF;
+  --tx-mist:          #EDEFF3;
+
+  /* Surfaces */
+  --tx-bg: linear-gradient(180deg, var(--tx-navy) 0%, #1C0C6E 45%, var(--tx-violet) 100%);
+  --tx-bg-radial: radial-gradient(120% 80% at 50% 110%, var(--tx-violet-light) 0%, var(--tx-violet) 30%, #1C0C6E 65%, var(--tx-navy) 100%);
+  --tx-card: linear-gradient(160deg, rgba(120, 88, 255, .28), rgba(93, 54, 255, .10));
+  --tx-card-border: rgba(184, 148, 255, .28);
+  --tx-card-blur: 16px;
+
+  /* Type: 72 = web version of "72 Brand" used in the deck */
+  --tx-font: "72", "72full", Arial, Helvetica, sans-serif;
+  --tx-weight-book: 400;   /* deck: 72 Brand Book  -> 72 Regular */
+  --tx-weight-medium: 600; /* deck: 72 Brand Medium -> 72 Bold renders heavier; use 600 if a Semibold face is added */
+  --tx-display:  clamp(3rem, 7vw, 6rem);     /* 60pt headline on a 1920 slide */
+  --tx-stat:     clamp(4.5rem, 12vw, 11rem); /* 140 / 110,000+ / 50 */
+  --tx-numeral:  clamp(18rem, 45vw, 40rem);  /* giant background numeral (720pt) */
+  --tx-h2:       clamp(2rem, 4vw, 3rem);     /* 40pt section titles */
+  --tx-eyebrow:  clamp(1rem, 1.6vw, 1.5rem); /* 24pt teal kicker */
+  --tx-body:     1.125rem;
+  --tx-chip:     .875rem;
+  --tx-tracking-tight: -0.015em;             /* spc -150 on headlines */
+
+  /* Shape */
+  --tx-radius-pill: 999px;
+  --tx-radius-card: 20px;
+  --tx-radius-chip: 999px;
+}
+
+/* ---------- Building blocks ---------- */
+
+.tx-surface { background: var(--tx-bg); color: var(--tx-white); font-family: var(--tx-font); }
+
+.tx-eyebrow { color: var(--tx-teal); font-size: var(--tx-eyebrow); font-weight: var(--tx-weight-book); margin: 0 0 .25em; }
+
+.tx-display { font-size: var(--tx-display); font-weight: var(--tx-weight-medium); line-height: 1.05; letter-spacing: var(--tx-tracking-tight); }
+.tx-display .tx-accent, .tx-accent { color: var(--tx-teal); }  /* "Build things that matter<span class=tx-accent>.</span>" */
+
+/* Big stat with giant numeral behind it (deck slides "140 BAPIs", "50 years") */
+.tx-stat { position: relative; display: grid; place-items: center; text-align: center; isolation: isolate; }
+.tx-stat::before {
+  content: attr(data-numeral); position: absolute; z-index: -1; inset: 50% auto auto 50%; transform: translate(-50%, -50%);
+  font-size: var(--tx-numeral); font-weight: var(--tx-weight-medium); line-height: .8; letter-spacing: -.04em;
+  background: linear-gradient(180deg, var(--tx-indigo-numeral), var(--tx-violet)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  opacity: .55; pointer-events: none;
+}
+.tx-stat__value { font-size: var(--tx-stat); font-weight: var(--tx-weight-medium); line-height: 1; }
+.tx-stat__label { font-size: var(--tx-eyebrow); color: var(--tx-sky); }
+
+/* Pill trio divider: dot + long pill + short pill */
+.tx-pills { display: inline-flex; gap: .5rem; align-items: center; }
+.tx-pills::before, .tx-pills::after, .tx-pills > i { content: ""; display: block; height: 1.25rem; border-radius: var(--tx-radius-pill); }
+.tx-pills::before { width: 1.25rem; background: var(--tx-teal); }
+.tx-pills > i     { width: 5.25rem; background: var(--tx-blue); }
+.tx-pills::after  { width: 2.25rem; background: var(--tx-pink); }
+
+/* Chips / tag cloud (topics, tracks, technologies) */
+.tx-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tx-chip { font-size: var(--tx-chip); padding: .35em 1em; border-radius: var(--tx-radius-chip); background: var(--tx-blue); color: var(--tx-white); }
+.tx-chip--teal { background: var(--tx-teal); color: var(--tx-navy-ink); }
+.tx-chip--pink { background: var(--tx-pink); color: var(--tx-navy-ink); }
+.tx-chip--lilac { background: var(--tx-lilac); color: var(--tx-navy-ink); }
+.tx-chip--ghost { background: rgba(255,255,255,.08); border: 1px solid var(--tx-card-border); }
+
+/* Glass card + bento grid (deck slides "Joule Work knows your system", "40 / 300") */
+.tx-card { background: var(--tx-card); border: 1px solid var(--tx-card-border); border-radius: var(--tx-radius-card); padding: 1.5rem; backdrop-filter: blur(var(--tx-card-blur)); }
+.tx-bento { display: grid; gap: 1rem; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(160px, auto); }
+.tx-bento > .tx-card--wide { grid-column: span 2; }
+.tx-bento > .tx-card--tall { grid-row: span 2; }
+@media (max-width: 760px) { .tx-bento { grid-template-columns: 1fr 1fr; } }
+
+/* Buttons in deck style */
+.tx-btn { display: inline-block; padding: .75em 1.5em; border-radius: var(--tx-radius-pill); background: var(--tx-white); color: var(--tx-violet); font-weight: var(--tx-weight-medium); text-decoration: none; }
+.tx-btn--outline { background: transparent; color: var(--tx-white); border: 1.5px solid var(--tx-teal); }
+
+/* Light trail / speed lines ("technological shift", "Endless opportunities") */
+.tx-trails { height: 4px; border-radius: 4px; background: linear-gradient(90deg, transparent, var(--tx-blue) 60%, var(--tx-teal)); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tx-float { animation: tx-float 6s ease-in-out infinite; }
+  @keyframes tx-float { 50% { transform: translateY(-8px); } }
+}
