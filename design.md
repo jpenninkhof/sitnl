@@ -5,6 +5,7 @@ aligned with the TechEd 2026 keynote analysis in the claude.ai project
 (`design/teched-2026-visuele-stijl.md`, `design/sitnl-teched-tokens.css`, `design/motifs/`).
 If code and this file disagree, this file wins until it is updated on purpose.
 Where this file deviates from the TechEd analysis, it says so and why.
+Live on sitnl.nl since 20 November 2026 (repo `jpenninkhof/sitnl`, deployed by Netlify).
 
 ---
 
@@ -35,7 +36,8 @@ deciding whether to sponsor, and first-time speakers.
 
 **The one job:** get a returning community member to say "I'm going" within ten
 seconds: dates, place, what it is, how to join. Until registration opens the job is
-"watch the video, save the date"; once it opens, every page funnels to Register.
+"watch the video (in the hero), save the date, submit a talk"; once it opens, every
+page funnels to Register.
 
 **Secondary jobs:** sponsors find the package and a contact; attendees find how to
 get to the venue.
@@ -145,12 +147,12 @@ Not used: the multicolour sparkle cluster and `rings.svg` in their original colo
   second line 90ms later; then the full stop and the trio's dot "switch on" (scale
   0.6 → 1, 240ms). One orchestrated moment.
 - Disclosures (mobile nav, agenda filters, FAQ): height/opacity 200ms.
-- Video facade to iframe: 150ms fade.
+- Video: plain inline embed, no facade; it fades in with the hero (from 600ms).
 
 **Polish:** button fill lightens on hover (accent L 0.79 → 0.84), 120ms; link underline
 offset 2px → 4px. Added in the polish pass (step 5):
 - **Film grain:** static, faint (7% opacity) noise over the whole page. Not animated.
-- **Magnetic hero button:** "Watch the video" drifts at most 6px toward the pointer.
+- **Magnetic hero button:** the primary hero button ("Add to calendar") drifts at most 6px toward the pointer.
   Fine pointers only; off under reduced motion and on touch.
 - **Quiet bar:** once the hero has scrolled away, a solid `--bg-top` bar with a hairline
   slides in (200ms) with the small logo and nav (links only on phones). No blur.
@@ -170,7 +172,7 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
 ## 8. Components
 
 - **Page spine:** hero (with video) → the two days → what to expect → call for papers →
-  agenda (hidden until live) → sponsors → getting there → register / save-the-date →
+  agenda (hidden until live) → sponsors (hidden until the line-up is known) → getting there → register / save-the-date →
   footer. Bands alternate `--bg` / `--bg-top`.
 - **Header:** small logo on a transparent background (left, no plate), nav right:
   `register`, `agenda`, `call for papers`, `sponsoring`, `getting there`. Items that
@@ -240,9 +242,9 @@ brand guidelines before publishing any of them on sitnl.nl.
 | Font 72 | Regular, Bold, Black woff2 | `assets/fonts/` (from 2025 site) | In place |
 | Pill trio | Orange dot, violet-light long pill, lilac short pill | Recoloured from `design/motifs/pill-trio.svg`, inline SVG or CSS | Later step |
 | Background shape | Oversized rounded four-point star or half ring, `--shape` at low contrast | `motifs/sparkle.svg` (currentColor) or `backgrounds/arc-half-ring.webp` | Later step |
-| Favicon / app icon | Orange dot on navy square | Draw as SVG | Later step |
+| Favicon / app icon | Orange dot on navy square | Draw as SVG (the logo SVG is used for now) | Later step |
 | Social share image | 1200×630 gradient field, staggered thesis, logo on transparent background | Generate from the hero | Later step |
-| Call-to-join video | YouTube, custom poster frame | `rvsy4NfkXWg`; poster from a video frame | Later step |
+| Call-to-join video | YouTube embed in the hero | `rvsy4NfkXWg` via youtube-nocookie | Live |
 | Isometric illustrations | Lilac/violet isometric scenes (people, code, data network) | `illustrations/iso-*.webp`, at most one per teaser, never as decoration in the hero | Optional, after brand check |
 | Kasimir loops | Short animated loops of SAP's Kasimir character | `kasimir/` (+ `KASIMIR.md` on usage and rights), project file `SAP_Kasimir_Idle_Final.mp4` | Optional, only if the rights in `KASIMIR.md` allow it; never more than one on the page |
 | Event photos | Last year's crowd shots, duotoned navy shadows / warm highlights | 2025 SitNL photo album | Optional |
