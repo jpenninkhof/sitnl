@@ -174,11 +174,11 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
 ## 8. Components
 
 - **Page spine:** hero (with video) → the two days → what to expect → call for papers →
-  agenda (hidden until live) → sponsors (hidden until the line-up is known) → getting there → register / save-the-date →
+  agenda (hidden until live) → sponsors (logo wall, links to `sponsors.html`) → getting there → register / save-the-date →
   footer. Bands alternate `--bg` / `--bg-top`.
 - **Header:** small logo on a transparent background (left, no plate), nav right:
   `register`, `agenda`, `call for papers`, `sponsoring`, `getting there`. Items that
-  aren't live are left out. Now showing: `call for papers`, `getting there`. Nav links never wrap internally; on phones the nav drops below the logo.
+  aren't live are left out. Now showing: `call for papers`, `sponsoring`, `getting there`. Nav links never wrap internally; on phones the nav drops below the logo.
 - **Call for papers:** section intro with the trio, then two columns: what we're
   looking for (topics, session formats as outline chips in `--line`, primary "Submit a
   talk" to Andreas Kunz's planning tool, secondary mailto) and a `--surface` card with
@@ -206,13 +206,13 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
   text, rooms as outline chips in `--line`. No teal/pink chips.
 - **Agenda (later, hidden at launch):** data from Andreas Kunz's planning tool
   (`sitnl.cfapps.eu12.hana.ondemand.com`); time-ordered list, times in tabular utility type.
-- **Sponsors:** hidden for now (section has `hidden`, nav item removed) until the 2027
-  sponsor line-up is known. When shown: logos in ink-coloured monochrome on `--bg-top`, grouped by tier. The site
+- **Sponsors:** live since 20 November 2026: home-page section with a logo wall (each logo
+  links to its entry on `sponsors.html`), "Become a sponsor" and "Meet our sponsors". Logos in their own colours (owner's choice, Nov 2026), grouped by tier when there is more than one. The site
   stays static and independent of the sponsor registration app: a script periodically
   pulls the sponsors from that BTP app and publishes them as a static `js/sponsors.js`
   (`var sponsorLineupJson = [...]`, fields `name`, `logo`, `website`, `sponsortype`,
   `description`, social handles). The 2027 page reads that same format, so the export
-  script keeps working unchanged. Logos in `images/sponsors/`.
+  script keeps working unchanged. Logos in `assets/sponsors/` (`sprite.svg` + `sap.png`, from 2025). Page: `sponsors.html`; logos keep their own colours on a transparent background; sprite logos that use colour variables get the dark-background values of the 2025 site (white replaced by `--ink`).
 - **Getting there:** venue card, an embedded OpenStreetMap map (iframe, marker on
   Amerikastraat 10 at 51.71252, 5.33944, 20px radius, `--line` border, "View larger map"
   link), then short lists for car, parking, public transport.
@@ -251,7 +251,7 @@ brand guidelines before publishing any of them on sitnl.nl.
 | Kasimir loops | Short animated loops of SAP's Kasimir character | `kasimir/` (+ `KASIMIR.md` on usage and rights), project file `SAP_Kasimir_Idle_Final.mp4` | Optional, only if the rights in `KASIMIR.md` allow it; never more than one on the page |
 | Event photos | Last year's crowd shots, duotoned navy shadows / warm highlights | 2025 sitNL photo album | Optional |
 | Speaker photos | Square, same duotone | Andreas Kunz's planning tool | When agenda opens |
-| Sponsor logos | Monochrome ink on navy; original colours only if a contract requires it | 2025 `images/sponsors/sprite.svg` + static `js/sponsors.js` export | Carry over |
+| Sponsor logos | Own colours on the navy field (owner's choice, Nov 2026) | 2025 `images/sponsors/sprite.svg` + static `js/sponsors.js` export | Carry over |
 | Getting-there icons | Line icons in ink, or one isometric illustration | Hand-drawn SVG sprite or `iso-*` | Later step |
 
 Not used: SAP product screenshots, the Joule diamond, third-party logos, the deck's

@@ -174,7 +174,22 @@
     .cfp-dates h3 { margin-bottom: 1rem; }
 
     /* Sponsors */
-    .logo-wall { min-height: 12rem; margin-bottom: 2rem; }
+    /* Three logos per row (two on phones); an incomplete last row is centred */
+    .logo-wall { list-style: none; margin: 0 0 3rem; padding: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem 3rem; }
+    .logo-wall li { flex: 0 0 calc((100% - 2 * 3rem) / 3); display: flex; justify-content: center; }
+    .logo-wall a { display: flex; align-items: center; justify-content: center; height: 6.5rem; }
+    .logo-wall svg, .logo-wall img { display: block; width: 18rem; max-width: 100%; height: 5.75rem; object-fit: contain; }
+    .logo-wall svg.square { width: 5.75rem; }
+    @media (max-width: 48rem) { .logo-wall { gap: 1rem 2rem; } .logo-wall li { flex-basis: calc((100% - 2rem) / 2); } .logo-wall a { height: 4rem; } .logo-wall svg, .logo-wall img { width: 10rem; height: 3.5rem; } .logo-wall svg.square { width: 3.5rem; } }
+    /* Sponsor logos in their own colours. Some sprite logos take their colours from these
+       variables: the dark-background values of the 2025 site, with ink instead of white. */
+    .logo-wall {
+      --neptune-color-0: var(--ink); --neptune-color-1: #ff9e33;
+      --emixa-color: var(--ink); --expertum-color: var(--ink); --innov8ion-color: #33cc66;
+      --comweg-color-0: var(--ink); --comweg-color-1: var(--ink); --comweg-color-2: var(--ink);
+      --comweg-color-3: var(--ink); --comweg-color-4: var(--ink); --comweg-color-5: var(--ink);
+    }
+    .logo-wall-empty { margin: 0 0 2rem; }
 
     /* Getting there */
     .venue { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gutter); align-items: start; }
@@ -271,6 +286,7 @@
       <nav class="nav" aria-label="Main, compact">
         <ul>
           <li><a href="#call-for-papers">call for papers</a></li>
+          <li><a href="#sponsors">sponsoring</a></li>
           <li><a href="#getting-there">getting there</a></li>
         </ul>
       </nav>
@@ -292,6 +308,7 @@
           <ul>
             <!-- register and agenda join this list when they go live (design.md §8) -->
             <li><a href="#call-for-papers">call for papers</a></li>
+            <li><a href="#sponsors">sponsoring</a></li>
             <li><a href="#getting-there">getting there</a></li>
           </ul>
         </nav>
@@ -420,18 +437,21 @@
       </div>
     </section>
 
-    <!-- SPONSORS -->
-    <!-- SPONSORS: hidden until the 2027 sponsor line-up is known (todo) -->
-    <section class="band" id="sponsors" aria-labelledby="sponsors-title" hidden>
+    <!-- SPONSORS: logos from js/sponsors.js (written by agenda/main.go), details on sponsors.html -->
+    <section class="band" id="sponsors" aria-labelledby="sponsors-title">
       <div class="wrap">
         <div class="intro reveal">
           <span class="trio" aria-hidden="true"><i></i><i></i><i></i></span>
           <h2 id="sponsors-title">Our sponsors</h2>
           <p>sitNL is free because these companies pay for the room, the food and the drinks. Thank you.</p>
         </div>
-        <div class="logo-wall ph-block reveal"><span>sponsor logos: monochrome ink on navy, grouped by tier, rendered from the static js/sponsors.js export</span></div>
+        <div class="reveal">
+          <ul class="logo-wall" id="logo-wall" aria-label="Sponsors"></ul>
+          <p class="logo-wall-empty meta" id="logo-wall-empty">We’ll introduce the sitNL 2027 sponsors here soon.</p>
+        </div>
         <div class="actions reveal">
           <a class="btn btn-primary" href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Sponsoring">Become a sponsor</a>
+          <a class="btn btn-secondary" href="sponsors.html">Meet our sponsors</a>
         </div>
       </div>
     </section>
@@ -492,7 +512,46 @@
     </div>
   </footer>
 
+  <!-- Sponsor data: var sponsorLineupJson = [...], written by agenda/main.go -->
+  <script src="js/sponsors.js"></script>
   <script>
+    {
+      // Sponsor logo wall. Same logo rules as sponsors.html.
+      const SQUARE_LOGOS = ['vnsg'];
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+      const data = (typeof sponsorLineupJson !== 'undefined' && Array.isArray(sponsorLineupJson)) ? sponsorLineupJson : [];
+      const text = v => v == null ? '' : new DOMParser().parseFromString(String(v), 'text/html').documentElement.textContent.trim();
+      const slug = v => text(v).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const wall = document.getElementById('logo-wall');
+      const sponsors = data.filter(s => s && text(s.name) && text(s.logo));
+
+      sponsors.forEach(s => {
+        const name = text(s.name), file = text(s.logo);
+        const key = file.includes('#') ? file.split('#')[1] : file;
+        const a = document.createElement('a');
+        a.href = 'sponsors.html#sponsor-' + slug(s.name);
+        a.setAttribute('aria-label', name);
+        if (file.startsWith('sprite.svg#')) {
+          const svg = document.createElementNS(SVG_NS, 'svg');
+          svg.setAttribute('aria-hidden', 'true');
+          if (SQUARE_LOGOS.includes(key)) svg.setAttribute('class', 'square');
+          const use = document.createElementNS(SVG_NS, 'use');
+          use.setAttribute('href', 'assets/sponsors/' + file);
+          svg.appendChild(use);
+          a.appendChild(svg);
+        } else {
+          const img = document.createElement('img');
+          img.src = 'assets/sponsors/' + file;
+          img.alt = '';
+          a.appendChild(img);
+        }
+        const li = document.createElement('li');
+        li.appendChild(a);
+        wall.appendChild(li);
+      });
+      if (sponsors.length) document.getElementById('logo-wall-empty').hidden = true;
+      else wall.hidden = true;
+    }
     {
       // Calm reveals: once per element, only when motion is allowed.
       const els = document.querySelectorAll('.reveal');

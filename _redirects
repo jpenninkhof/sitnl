@@ -1,3 +1,2 @@
 # Netlify redirects: keep 2025 URLs working after the 2027 relaunch
 /location.html        /#getting-there                          301
-/sponsors.html        /                                        302

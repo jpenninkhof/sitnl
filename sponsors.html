@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sponsoring, SAP Inside Track Netherlands 2027</title>
+  <meta name="description" content="sitNL is free for everyone who comes, thanks to our sponsors. Meet the companies behind SAP Inside Track Netherlands 2027, or find out how to become a sponsor.">
+  <link rel="icon" type="image/svg+xml" href="assets/sitnl-2027-logo.svg">
+  <link rel="preload" href="assets/fonts/72-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/72-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* Same tokens as index.html, from design.md §3–§5 */
+    @font-face { font-family: "72"; src: url("assets/fonts/72-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "72"; src: url("assets/fonts/72-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+    :root {
+      --bg-top: oklch(0.22 0.10 262);
+      --bg: oklch(0.27 0.15 277);
+      --bg-bottom: oklch(0.53 0.27 280);
+      --surface: oklch(0.37 0.22 275);
+      --line: oklch(0.59 0.235 285);
+      --lilac: oklch(0.74 0.15 298);
+      --ink: oklch(0.98 0.01 285);
+      --ink-soft: oklch(0.83 0.10 238);
+      --accent: oklch(0.79 0.17 71);
+      --on-accent: oklch(0.18 0.09 281);
+      --wrap: 72rem;
+      --gutter: 1.5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "72", Arial, Helvetica, sans-serif; font-size: 1.0625rem; line-height: 1.6;
+      overflow-x: clip;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: 2px; transition: text-underline-offset 120ms; }
+    a:hover { text-underline-offset: 4px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+    .skip { position: absolute; left: var(--gutter); top: -4rem; background: var(--accent); color: var(--on-accent); padding: .5rem 1rem; border-radius: 999px; z-index: 10; }
+    .skip:focus { top: 1rem; }
+    .meta { color: var(--ink-soft); }
+
+    /* Header: the hero field, short */
+    .page-head { background: linear-gradient(in oklch 180deg, var(--bg-top), var(--bg) 70%, color-mix(in oklch, var(--bg) 70%, var(--bg-bottom))); padding-bottom: 4rem; }
+    .site-head { padding-block: 1.25rem; }
+    .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .brand img { width: 6.5rem; height: auto; }
+    .nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: 1.5rem; }
+    .nav a { display: inline-block; padding-block: .5rem; white-space: nowrap; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: 6px; transition: text-decoration-color 120ms, text-underline-offset 120ms; }
+    .nav a:hover, .nav a[aria-current="page"] { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+
+    .trio { display: inline-flex; gap: .5rem; align-items: center; margin: 3rem 0 1.5rem; }
+    .trio i { display: block; height: 1rem; border-radius: 999px; }
+    .trio i:nth-child(1) { width: 1rem; background: var(--accent); }
+    .trio i:nth-child(2) { width: 4.25rem; background: var(--line); }
+    .trio i:nth-child(3) { width: 1.75rem; background: var(--lilac); }
+    h1 { font-weight: 700; font-size: clamp(2.625rem, 6vw, 4.125rem); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.5rem; }
+    .lede { font-size: 1.3125rem; line-height: 1.5; max-width: 44ch; margin: 0 0 1rem; }
+    .page-head p:not(.lede) { max-width: 60ch; margin: 0 0 2rem; }
+
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: .875rem 1.5rem; border-radius: 999px; font: 700 1rem/1 "72", Arial, sans-serif; text-decoration: none; background: var(--accent); color: var(--on-accent); transition: background-color 120ms; }
+    .btn:hover { background: oklch(0.84 0.17 71); }
+
+    /* Sponsors band */
+    .band { padding-block: 6rem; }
+    .band-top { background: var(--bg-top); }
+    .band .trio { margin-top: 0; }
+    h2 { font-weight: 700; font-size: clamp(1.6875rem, 3vw, 2.625rem); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 1rem; }
+    .intro { max-width: 60ch; margin: 0 0 3rem; }
+
+    .tier { font-weight: 700; font-size: 1.3125rem; margin: 3rem 0 0; }
+    .tier:first-child { margin-top: 0; }
+    .sponsors { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--surface); }
+    .sponsor {
+      scroll-margin-top: 1.5rem;
+      display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 1.5rem 3rem;
+      padding-block: 2.5rem; border-bottom: 1px solid var(--surface);
+    }
+    .logo { display: flex; align-items: center; justify-content: flex-start; height: 4.5rem; }
+    .logo svg, .logo img { width: 12rem; height: 3.5rem; object-fit: contain; object-position: left center; }
+    /* Sponsor logos in their own colours. Some sprite logos take their colours from these
+       variables: the dark-background values of the 2025 site, with ink instead of white. */
+    .logo, .logo-wall {
+      --neptune-color-0: var(--ink); --neptune-color-1: #ff9e33;
+      --emixa-color: var(--ink); --expertum-color: var(--ink); --innov8ion-color: #33cc66;
+      --comweg-color-0: var(--ink); --comweg-color-1: var(--ink); --comweg-color-2: var(--ink);
+      --comweg-color-3: var(--ink); --comweg-color-4: var(--ink); --comweg-color-5: var(--ink);
+    }
+    .logo svg.square { width: 3.5rem; }
+
+    .sponsor h3, .sponsor h4 { font-weight: 700; font-size: 1.6875rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 .25rem; }
+    .motto { color: var(--ink-soft); font-size: 1.0625rem; margin: 0 0 1rem; }
+    .description { margin: 0 0 1rem; max-width: 66ch; }
+    .links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: 1.5rem; }
+    .links a { display: inline-block; padding-block: .5rem; color: var(--ink-soft); }
+    .links a:hover { color: var(--ink); }
+
+    .empty { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; max-width: 44rem; }
+    .empty p { margin: 0; }
+
+    /* Footer */
+    .site-foot { background: var(--bg); border-top: 1px solid var(--surface); padding-block: 3rem; }
+    .site-foot ul { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .site-foot a { display: inline-block; padding-block: .5rem; }
+    .site-foot p { margin: 0 0 1em; }
+
+    /* Calm motion (design.md §7): section intro and first block fade in once */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms cubic-bezier(.2,.8,.2,1), transform 500ms cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      a, .nav a, .btn { transition: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    @media (max-width: 48rem) {
+      .nav ul { column-gap: 1rem; font-size: .9375rem; }
+      .band { padding-block: 4rem; }
+      .sponsor { grid-template-columns: 1fr; gap: 1rem; padding-block: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="page-head">
+    <div class="site-head">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="sitNL 2027 home">
+          <img src="assets/sitnl-2027-logo.svg" alt="" width="104" height="58">
+        </a>
+        <nav class="nav" aria-label="Main">
+          <ul>
+            <li><a href="./#call-for-papers">call for papers</a></li>
+            <li><a href="sponsors.html" aria-current="page">sponsoring</a></li>
+            <li><a href="./#getting-there">getting there</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="wrap">
+      <span class="trio" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h1>Sponsor sitNL</h1>
+      <p class="lede">sitNL is free for everyone who comes. Our sponsors cover the costs, so the day stays free and there are no sales pitches from the stage.</p>
+      <p>We have sponsor packages ready, and we’re just as happy to put together a custom package that fits your organisation. Tell us what you have in mind.</p>
+      <a class="btn" href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Sponsoring">Become a sponsor</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="band band-top" aria-labelledby="sponsors-title">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="trio" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h2 id="sponsors-title">Meet our sponsors</h2>
+          <p class="intro">The companies and communities that make sitNL possible.</p>
+        </div>
+        <div id="sponsor-list" class="reveal">
+          <div class="empty">
+            <p>We’ll introduce the sitNL 2027 sponsors here soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <ul>
+        <li><a href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Question">Reach out to us</a></li>
+        <li><a href="codeofconduct.html">Code of conduct</a></li>
+      </ul>
+      <p class="meta">Organised by volunteers from the Dutch SAP community. Venue: SAP Nederland, Amerikastraat 10, 5232 BE ’s-Hertogenbosch. Contact: <a href="mailto:info@sitnl.nl">info@sitnl.nl</a></p>
+      <p class="meta">© 2027 SAP Inside Track Netherlands</p>
+    </div>
+  </footer>
+
+  <!-- Sponsor data: var sponsorLineupJson = [...], written by agenda/main.go -->
+  <script src="js/sponsors.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var LOGO_DIR = "assets/sponsors/";
+      // Square sprite logos: sized square so they line up left like the others
+      var SQUARE_LOGOS = ["vnsg"];
+      // Display order of tiers; unknown tiers follow in data order
+      var TIER_ORDER = ["platinum", "gold", "silver", "bronze", "sponsor", "partner", "community"];
+      var SVG_NS = "http://www.w3.org/2000/svg";
+
+      var data = (typeof sponsorLineupJson !== "undefined" && Array.isArray(sponsorLineupJson)) ? sponsorLineupJson : [];
+      var root = document.getElementById("sponsor-list");
+
+      // Text from the sponsor app can contain HTML entities (&amp;): decode, never inject as HTML
+      function text(value) {
+        if (value == null) return "";
+        return new DOMParser().parseFromString(String(value), "text/html").documentElement.textContent.trim();
+      }
+
+      function link(base, handle) {
+        handle = text(handle);
+        if (!handle) return null;
+        if (/^https?:\/\//i.test(handle)) return handle;
+        return base + handle.replace(/^\/+/, "");
+      }
+
+      function safeUrl(url) {
+        return url && /^https?:\/\//i.test(url) ? url : null;
+      }
+
+      function el(tag, className, content) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (content) node.textContent = content;
+        return node;
+      }
+
+      function logo(sponsor) {
+        var file = text(sponsor.logo);
+        if (!file) return null;
+        var key = file.indexOf("#") >= 0 ? file.split("#")[1] : file;
+        var box = el("div", "logo");
+        box.setAttribute("aria-hidden", "true"); // the name follows as a heading
+
+        if (file.indexOf("sprite.svg#") === 0) {
+          var svg = document.createElementNS(SVG_NS, "svg");
+          if (SQUARE_LOGOS.indexOf(key) >= 0) svg.setAttribute("class", "square");
+          var use = document.createElementNS(SVG_NS, "use");
+          use.setAttribute("href", LOGO_DIR + file);
+          svg.appendChild(use);
+          box.appendChild(svg);
+        } else {
+          var img = document.createElement("img");
+          img.src = LOGO_DIR + file;
+          img.alt = "";
+          box.appendChild(img);
+        }
+        return box;
+      }
+
+      function sponsorItem(sponsor, headingTag) {
+        var name = text(sponsor.name);
+        var li = el("li", "sponsor");
+        // Anchor for the logo wall on the home page: sponsors.html#sponsor-<name>
+        li.id = "sponsor-" + name.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        var logoBox = logo(sponsor);
+        li.appendChild(logoBox || el("div", "logo"));
+
+        var body = el("div");
+        body.appendChild(el(headingTag, null, name));
+        var motto = text(sponsor.motto);
+        if (motto) body.appendChild(el("p", "motto", motto));
+        var description = text(sponsor.description);
+        if (description) body.appendChild(el("p", "description", description));
+
+        var bluesky = text(sponsor.blueskyHandle).replace(/^@/, "");
+        var links = [
+          ["Website", safeUrl(text(sponsor.website))],
+          ["LinkedIn", safeUrl(link("https://www.linkedin.com/company/", sponsor.linkedInHandle))],
+          ["Bluesky", safeUrl(bluesky ? link("https://bsky.app/profile/", bluesky) : null)],
+          ["Instagram", safeUrl(link("https://www.instagram.com/", sponsor.instagramHandle))],
+          ["Facebook", safeUrl(link("https://www.facebook.com/", sponsor.facebookHandle))],
+          ["YouTube", safeUrl(link("https://www.youtube.com/", sponsor.youtubeHandle))]
+        ].filter(function (l) { return l[1]; });
+
+        if (links.length) {
+          var ul = el("ul", "links");
+          ul.setAttribute("aria-label", "Links for " + name);
+          links.forEach(function (l) {
+            var a = el("a", null, l[0]);
+            a.href = l[1];
+            a.rel = "noopener nofollow";
+            a.setAttribute("aria-label", l[0] + " of " + name);
+            var item = el("li");
+            item.appendChild(a);
+            ul.appendChild(item);
+          });
+          body.appendChild(ul);
+        }
+
+        li.appendChild(body);
+        return li;
+      }
+
+      function render() {
+        var sponsors = data.filter(function (s) { return s && text(s.name); });
+        if (!sponsors.length) return; // keep the "introduced soon" message
+
+        var tiers = [];
+        var byTier = {};
+        sponsors.forEach(function (s) {
+          var tier = text(s.sponsortype).toLowerCase() || "sponsor";
+          if (!byTier[tier]) { byTier[tier] = []; tiers.push(tier); }
+          byTier[tier].push(s);
+        });
+        tiers.sort(function (a, b) {
+          var ia = TIER_ORDER.indexOf(a), ib = TIER_ORDER.indexOf(b);
+          return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+        });
+
+        var grouped = tiers.length > 1;
+        var fragment = document.createDocumentFragment();
+        tiers.forEach(function (tier) {
+          if (grouped) {
+            var label = tier.charAt(0).toUpperCase() + tier.slice(1);
+            fragment.appendChild(el("h3", "tier", /sponsor|partner/.test(tier) ? label + "s" : label + " sponsors"));
+          }
+          var ul = el("ul", "sponsors");
+          byTier[tier].forEach(function (s) { ul.appendChild(sponsorItem(s, grouped ? "h4" : "h3")); });
+          fragment.appendChild(ul);
+        });
+
+        root.replaceChildren(fragment);
+      }
+
+      render();
+
+      // Calm reveal, once, unless reduced motion is requested
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        reveals.forEach(function (r) { r.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { rootMargin: "0px 0px -10% 0px" });
+        reveals.forEach(function (r) { io.observe(r); });
+      }
+    })();
+  </script>
+</body>
+</html>
