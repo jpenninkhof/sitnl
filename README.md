@@ -2,7 +2,7 @@
 
 Website of SAP Inside Track Netherlands (#sitNL). Static site, no build step.
 The 2027 edition: Friday 22 January 2027 (pre-event, codejams) and Saturday 23 January
-2027 (SitNL), SAP Nederland, Amerikastraat 10, 5232 BE 's-Hertogenbosch.
+2027 (sitNL), SAP Nederland, Amerikastraat 10, 5232 BE 's-Hertogenbosch.
 
 Live since 20 November 2026. Design system and all design decisions: [`design.md`](design.md).
 Open items: `design/todo.md` in the claude.ai project "SitNL".
@@ -79,7 +79,7 @@ Important for 2027:
 - **Times, dates, deadlines:** search `index.html` for "to be announced" (event days,
   venue card, call-for-papers key dates).
 - **Open registration:** add `register` (and later `agenda`) to both navs (the header nav
-  and the quiet bar `#bar`), point the codejam/SitNL buttons and the `#register` band at
+  and the quiet bar `#bar`), point the codejam/sitNL buttons and the `#register` band at
   the real registration pages, change the hero actions per `design.md` §11.
 - **Show agenda or sponsors:** remove `hidden` from `#agenda` / `#sponsors`, add the nav
   item in both navs. When sponsors return, swap the band colours of `#getting-there` and

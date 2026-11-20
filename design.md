@@ -1,4 +1,4 @@
-# SitNL 2027 design system
+# sitNL 2027 design system
 
 Source of truth for every later build step. Direction: **Bouwlamp** (build lamp),
 aligned with the TechEd 2026 keynote analysis in the claude.ai project
@@ -11,17 +11,19 @@ Live on sitnl.nl since 20 November 2026 (repo `jpenninkhof/sitnl`, deployed by N
 
 ## 1. Brand & thesis
 
-**Brand:** SAP Inside Track Netherlands 2027, written `#sitNL` in running text and
-"SitNL" in the logo. Community-run, free, in person.
+**Brand:** SAP Inside Track Netherlands 2027. Always written **sitNL** (small s,
+capital NL), also at the start of a sentence and in headings; `#sitNL` as a hashtag.
+Never "SitNL" or "SITNL". (The logo artwork spells "SIT NL" in capitals; that is the
+artwork, not the word mark.) Community-run, free, in person.
 
 **Thesis line:** Build things that matter.
 
-The line is SAP TechEd 2026's theme, used on purpose. SitNL is where that theme lands
-locally: TechEd tells you what to build, SitNL is the room where Dutch builders show
+The line is SAP TechEd 2026's theme, used on purpose. sitNL is where that theme lands
+locally: TechEd tells you what to build, sitNL is the room where Dutch builders show
 each other what they built. Visually we take TechEd's system almost whole (the
 navy-to-violet field, 72 lettering, the staggered headline with an accent full stop,
 the pill trio) and make one swap: TechEd's teal accent becomes the **orange of the
-SitNL lions**. That orange (`#fca400`) sits right next to SAP gold (`#F0AB00`) in the
+sitNL lions**. That orange (`#fca400`) sits right next to SAP gold (`#F0AB00`) in the
 deck's own palette, so it reads as TechEd family at a glance and as "ours" on a second
 look.
 
@@ -126,7 +128,7 @@ Don't:
 **The lamp dot**, three ways, all orange, all from TechEd's vocabulary:
 1. **The full stop.** "Build things that matter**.**", the period in `--accent`, as TechEd
    does with teal. The one coloured glyph on the page.
-2. **The pill trio, SitNL edition.** TechEd's dot + long pill + short pill, recoloured:
+2. **The pill trio, sitNL edition.** TechEd's dot + long pill + short pill, recoloured:
    orange dot (`--accent`), long pill in `--line`, short pill in `--lilac`. Used as the
    section opener and at the bottom right of the hero. Max once per section.
 3. **The giant numeral.** "23" in 72 Black, `--shape` on the violet field, behind the
@@ -182,7 +184,7 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
   talk" to Andreas Kunz's planning tool, secondary mailto) and a `--surface` card with
   key dates (submissions open, deadline, speakers notified, event). Remove the nav item
   and the section's primary button when the call closes.
-- **Hero:** on the gradient field, full viewport height. First the **SitNL logo at full
+- **Hero:** on the gradient field, full viewport height. First the **sitNL logo at full
   content width** (transparent, directly on the field), then the brand line in `--ink-soft` ("SAP Inside Track
   Netherlands 2027", sentence case, not an eyebrow), staggered thesis, two-sentence lede,
   actions (primary "Add to calendar", secondary "Submit a talk"), the video on the
@@ -199,7 +201,7 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
   action colour.) Labels are verbs: "Register", "Become a sponsor", "Open route".
 - **Secondary button:** pill, 1.5px `--ink` outline, ink text.
 - **Event day pair:** two `--surface` cards, 20px radius, 1px `--line` border, solid (no
-  glass, no blur): "22 January, pre-event (codejams)" and "23 January, SitNL".
+  glass, no blur): "22 January, pre-event (codejams)" and "23 January, sitNL".
 - **Chips (agenda filters, later):** pill chips; tracks in `--lilac` with `--on-accent`
   text, rooms as outline chips in `--line`. No teal/pink chips.
 - **Agenda (later, hidden at launch):** data from Andreas Kunz's planning tool
@@ -221,7 +223,7 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
 ## 9. Copy rules
 
 - English throughout. Sentence case. No exclamation marks in UI copy.
-- Say what happens: "Register for SitNL", "Register for the codejam", "Download the
+- Say what happens: "Register for sitNL", "Register for the codejam", "Download the
   sponsor deck". Never a bare "Click here" or "Learn more".
 - Facts first: date, place, free, in person. Then the why.
 - "We" is the organising team, "you" the visitor. No marketing verbs (unlock, leverage,
@@ -238,7 +240,7 @@ brand guidelines before publishing any of them on sitnl.nl.
 
 | Asset | Look | Source | Status |
 |---|---|---|---|
-| SitNL 2027 logo | Heraldic lions, five flat colours: brown `#7f5200`, dark orange `#b27400`, mid orange `#e59502`, orange `#fca400`, cream `#ffe4b3`. Shield interior is transparent. Used on a transparent background directly on the navy/violet field (owner's choice, Nov 2026): the brown lions read with less contrast than on cream, which is accepted. Full content width in the hero, 6.5rem in the header | `assets/sitnl-2027-logo.svg` (vector trace, 23 KB); raster `sitnl-2027-logo.png/.webp`; project copy `design/logo/sitnl-2027-logo.svg` | In place |
+| sitNL 2027 logo | Heraldic lions, five flat colours: brown `#7f5200`, dark orange `#b27400`, mid orange `#e59502`, orange `#fca400`, cream `#ffe4b3`. Shield interior is transparent. Used on a transparent background directly on the navy/violet field (owner's choice, Nov 2026): the brown lions read with less contrast than on cream, which is accepted. Full content width in the hero, 6.5rem in the header | `assets/sitnl-2027-logo.svg` (vector trace, 23 KB); raster `sitnl-2027-logo.png/.webp`; project copy `design/logo/sitnl-2027-logo.svg` | In place |
 | Font 72 | Regular, Bold, Black woff2 | `assets/fonts/` (from 2025 site) | In place |
 | Pill trio | Orange dot, violet-light long pill, lilac short pill | Recoloured from `design/motifs/pill-trio.svg`, inline SVG or CSS | Later step |
 | Background shape | Oversized rounded four-point star or half ring, `--shape` at low contrast | `motifs/sparkle.svg` (currentColor) or `backgrounds/arc-half-ring.webp` | Later step |
@@ -247,7 +249,7 @@ brand guidelines before publishing any of them on sitnl.nl.
 | Call-to-join video | YouTube embed in the hero | `rvsy4NfkXWg` via youtube-nocookie | Live |
 | Isometric illustrations | Lilac/violet isometric scenes (people, code, data network) | `illustrations/iso-*.webp`, at most one per teaser, never as decoration in the hero | Optional, after brand check |
 | Kasimir loops | Short animated loops of SAP's Kasimir character | `kasimir/` (+ `KASIMIR.md` on usage and rights), project file `SAP_Kasimir_Idle_Final.mp4` | Optional, only if the rights in `KASIMIR.md` allow it; never more than one on the page |
-| Event photos | Last year's crowd shots, duotoned navy shadows / warm highlights | 2025 SitNL photo album | Optional |
+| Event photos | Last year's crowd shots, duotoned navy shadows / warm highlights | 2025 sitNL photo album | Optional |
 | Speaker photos | Square, same duotone | Andreas Kunz's planning tool | When agenda opens |
 | Sponsor logos | Monochrome ink on navy; original colours only if a contract requires it | 2025 `images/sponsors/sprite.svg` + static `js/sponsors.js` export | Carry over |
 | Getting-there icons | Line icons in ink, or one isometric illustration | Hand-drawn SVG sprite or `iso-*` | Later step |
@@ -296,6 +298,6 @@ videos, the `reference/` slides (inspiration only).
 - Reference slides: `artifacts/teched-2026-visuals/reference/` (e.g. slide 02,
   "Build things that matter.", the staggered headline with the accent full stop).
 - SAP TechEd 2026 key visual, `sap.com/events/teched.html`.
-- SitNL 2027 logo, and the 2025 site archived at `archive/sitnl2025/`.
+- sitNL 2027 logo, and the 2025 site archived at `archive/sitnl2025/`.
 - Bringhurst, *The Elements of Typographic Style*.
 - Registration and planning: `https://sitnl.cfapps.eu12.hana.ondemand.com/`.
