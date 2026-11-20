@@ -9,6 +9,7 @@
   <link rel="preload" href="assets/fonts/72-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/72-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="kasimir/kasimir.css">
   <style>
     /* Every value below comes from design.md (palette §3, type §4, layout §5, signature §6, motion §7). */
     @font-face { font-family: "72"; src: url("assets/fonts/72-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
@@ -508,9 +509,14 @@
         <li><a href="codeofconduct.html">Code of conduct</a></li>
       </ul>
       <p class="meta">Organised by volunteers from the Dutch SAP community. Venue: SAP Nederland, Amerikastraat 10, 5232 BE ’s-Hertogenbosch. Contact: <a href="mailto:info@sitnl.nl">info@sitnl.nl</a></p>
+      <p class="meta">Kasimir 3D: Koen Vissers (kunemann.com) with Goebel + Mattes, with thanks to SAP TechEd.</p>
       <p class="meta">© 2027 SAP Inside Track Netherlands</p>
     </div>
   </footer>
+
+  <!-- Kasimir peeks in bottom-right after 5 s (spot-Kasimir easter egg); see kasimir/ and design.md §10 -->
+  <button class="kasimir-peek" type="button" data-src="kasimir/kasimir-idle.mp4" data-delay="5000"></button>
+  <script src="kasimir/kasimir.js" defer></script>
 
   <!-- Sponsor data: var sponsorLineupJson = [...], written by agenda/main.go -->
   <script src="js/sponsors.js"></script>
