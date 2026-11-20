@@ -212,7 +212,7 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
 - **Getting there:** venue card, an embedded OpenStreetMap map (iframe, marker on
   Amerikastraat 10 at 51.71252, 5.33944, 20px radius, `--line` border, "View larger map"
   link), then short lists for car, parking, public transport.
-- **Footer:** "Stay updated", "Reach out to us" (`info@sitnl.nl`), "Code of conduct",
+- **Footer:** "Reach out to us" (`info@sitnl.nl`), "Code of conduct",
   copyright. On `--bg-top`.
 - **Focus:** 3px `--accent` outline, 3px offset, on every interactive element.
 
@@ -224,8 +224,9 @@ block), no parallax, no inertia scrolling, no pinned sections, no looping animat
 - Facts first: date, place, free, in person. Then the why.
 - "We" is the organising team, "you" the visitor. No marketing verbs (unlock, leverage,
   seamless, empower).
-- SAP product names written correctly. Code of conduct text verbatim from 2025 unless
-  the organisers change it.
+- SAP product names written correctly. Code of conduct (`codeofconduct.html`, 2027
+  theme): 2025 text with light edits (UI5 topics → SAP technology topics, refund clause
+  dropped because the event is free, typos and gendered wording fixed).
 
 ## 10. Assets plan
 
