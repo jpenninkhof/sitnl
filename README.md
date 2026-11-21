@@ -29,6 +29,10 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+The hero video is a local poster (`images/video-poster.webp/.jpg`, taken from the
+YouTube thumbnail) that swaps in the YouTube player on click, so nothing from YouTube
+loads before someone presses play. Replace the poster if the video changes.
+
 Open via a local server, not by double-clicking the file: the YouTube video and the
 map are iframes and need http.
 
@@ -47,12 +51,16 @@ To check a change before it goes live, push a branch (`git switch -c my-change`,
 `git push -u origin my-change`) and use the Netlify deploy preview, if branch deploys
 are enabled for the site.
 
-## Data: agenda, speakers, sponsors
+## Data: event settings, agenda, speakers, sponsors
 
 `agenda/main.go` logs in to Andreas Kunz's planning tool
 (`sitnl.cfapps.eu12.hana.ondemand.com`) and the sponsor app
 (`presales-nl---build-apps-dev-sitnl-srv.cfapps.eu12.hana.ondemand.com`), then writes:
 
+- `js/event.js` (`var eventConfigJson = {...}`): the public event settings from
+  `/api/events/sitnl`, such as the call for papers deadline. The planning tool's event
+  record also holds mail server settings and e-mail templates, so the script copies only
+  the fields listed in `eventPublicFields` in `main.go`. Add a field there to publish it.
 - `js/agenda.js` (`var proposalLineupJson = [...]`)
 - `js/sponsors.js` (`var sponsorLineupJson = [...]`)
 - speaker photos into `images/speakers/`
@@ -77,13 +85,19 @@ Important for 2027:
 ## Common changes
 
 - **Times, dates, deadlines:** search `index.html` for "to be announced" (event days,
-  venue card, call-for-papers key dates).
+  venue card, call-for-papers key dates). The call for papers deadline comes from the
+  planning tool: an element with `data-event="cfpDeadlineAsString"` gets its text from
+  `js/event.js` when that file exists. Keep the HTML text in step with the tool, because
+  it is what visitors see when `js/event.js` isn't deployed.
 - **Open registration:** add `register` (and later `agenda`) to both navs (the header nav
   and the quiet bar `#bar`), point the codejam/sitNL buttons and the `#register` band at
   the real registration pages, change the hero actions per `design.md` §11.
 - **Show agenda or sponsors:** remove `hidden` from `#agenda` / `#sponsors`, add the nav
-  item in both navs. When sponsors return, swap the band colours of `#getting-there` and
-  `.register` back so bands keep alternating (`band` / `band band-top`).
+  item in both navs. Then check that visible bands still alternate between `band` (violet)
+  and `band band-top` (navy), ending on a violet `.register` band above the navy footer.
+  Current order: days (navy), expect (violet), call for papers (navy), sponsors (violet),
+  getting there (navy), register (violet). Showing `#agenda` means flipping the bands
+  after it.
 - **Close the call for papers:** remove the "call for papers" nav item (both navs) and
   the "Submit a talk" buttons (hero and section), or turn the section into a
   "speakers announced" note.

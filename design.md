@@ -156,7 +156,7 @@ offset 2px → 4px. Added in the polish pass (step 5):
 - **Film grain:** static, faint (7% opacity) noise over the whole page. Not animated.
 - **Magnetic hero button:** the primary hero button ("Add to calendar") drifts at most 6px toward the pointer.
   Fine pointers only; off under reduced motion and on touch.
-- **Quiet bar:** once the hero has scrolled away, a solid `--bg-top` bar with a hairline
+- **Quiet bar:** as soon as the hero header (logo and nav) scrolls out of view, a solid `--bg-top` bar with a hairline
   slides in (200ms) with the small logo and nav (links only on phones). No blur.
 - **Nav links:** orange underline (`--accent`) fades in on hover, offset 6px → 4px.
 - **Deliberately not added:** custom cursor (the one effect removed), Lenis inertia
@@ -244,12 +244,12 @@ brand guidelines before publishing any of them on sitnl.nl.
 | Font 72 | Regular, Bold, Black woff2 | `assets/fonts/` (from 2025 site) | In place |
 | Pill trio | Orange dot, violet-light long pill, lilac short pill | Recoloured from `design/motifs/pill-trio.svg`, inline SVG or CSS | Later step |
 | Background shape | Oversized rounded four-point star or half ring, `--shape` at low contrast | `motifs/sparkle.svg` (currentColor) or `backgrounds/arc-half-ring.webp` | Later step |
-| Favicon / app icon | Orange dot on navy square | Draw as SVG (the logo SVG is used for now) | Later step |
-| Social share image | 1200×630 gradient field, staggered thesis, logo on transparent background | Generate from the hero | Later step |
+| Favicon / app icon | Orange dot on navy square | `favicon.svg`, `favicon.ico` (32px), `apple-touch-icon.png` (180px) in the repo root | In place |
+| Social share image | 1200×630 gradient field, staggered thesis, logo on transparent background | `assets/sitnl-2027-share.png`, referenced by the `og:`/`twitter:` tags on every page | In place |
 | Call-to-join video | YouTube embed in the hero | `rvsy4NfkXWg` via youtube-nocookie | Live |
 | Isometric illustrations | Lilac/violet isometric scenes (people, code, data network) | `illustrations/iso-*.webp`, at most one per teaser, never as decoration in the hero | Optional, after brand check |
 | Kasimir loops | Short animated loops of SAP's Kasimir character | `kasimir/` (+ `KASIMIR.md` on usage and rights), project file `SAP_Kasimir_Idle_Final.mp4` | Optional, only if the rights in `KASIMIR.md` allow it; never more than one on the page |
-| Event photos | Last year's crowd shots, duotoned navy shadows / warm highlights | 2025 sitNL photo album | Optional |
+| Event photos | Crowd shots, duotoned navy shadows / warm highlights | `images/past/` (2018 and 2019 gallery photos from the archive, duotoned); swap in 2025 shots from the photo album when available | In place (previous editions strip) |
 | Speaker photos | Square, same duotone | Andreas Kunz's planning tool | When agenda opens |
 | Sponsor logos | Own colours on the navy field (owner's choice, Nov 2026) | 2025 `images/sponsors/sprite.svg` + static `js/sponsors.js` export | Carry over |
 | Getting-there icons | Line icons in ink, or one isometric illustration | Hand-drawn SVG sprite or `iso-*` | Later step |

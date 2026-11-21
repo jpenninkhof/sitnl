@@ -7,7 +7,7 @@ UID:sitnl-2027-preevent@sitnl.nl
 DTSTAMP:20261120T170000Z
 DTSTART;VALUE=DATE:20270122
 DTEND;VALUE=DATE:20270123
-SUMMARY:SitNL 2027 pre-event (codejams)
+SUMMARY:sitNL 2027 pre-event (codejams)
 LOCATION:SAP Nederland\, Amerikastraat 10\, 5232 BE 's-Hertogenbosch
 URL:https://sitnl.nl
 END:VEVENT

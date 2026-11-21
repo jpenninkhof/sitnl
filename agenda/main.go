@@ -1,6 +1,8 @@
-// Command agenda pulls the sitNL agenda, speakers, speaker photos and sponsors
-// from the planning tool and the sponsor app, and writes them as static files:
+// Command agenda pulls the sitNL event settings, agenda, speakers, speaker
+// photos and sponsors from the planning tool and the sponsor app, and writes
+// them as static files:
 //
+//	../js/event.js         var eventConfigJson = {...}   (public fields only)
 //	../js/agenda.js        var proposalLineupJson = [...]
 //	../js/sponsors.js      var sponsorLineupJson = [...]
 //	../images/speakers/    <hash>.jpg
@@ -59,12 +61,46 @@ const (
 	proposalURL  = "https://sitnl.cfapps.eu12.hana.ondemand.com/api/proposal"
 	speakerURL   = "https://sitnl.cfapps.eu12.hana.ondemand.com/api/speaker"
 	sponsorURL   = "https://btp-ca-nl-dev-sitnl-srv.cfapps.eu10-004.hana.ondemand.com/api/sponsors"
+	eventURL     = "https://sitnl.cfapps.eu12.hana.ondemand.com/api/events/sitnl"
+	eventID      = "sitnl"
 
 	jsDir           = "../js"
 	imagesTargetDir = "../images/speakers"
 	agendaFile      = "../js/agenda.js"
 	sponsorFile     = "../js/sponsors.js"
+	eventFile       = "../js/event.js"
 )
+
+// Event fields that may be published. The event record also holds mail server
+// settings, e-mail templates and legal texts, so this is an allowlist: a field
+// the planning tool adds later stays private until it is added here.
+var eventPublicFields = []string{
+	"id",
+	"name",
+	"longName",
+	"city",
+	"eventDateAsString",
+	"contactEmail",
+	"topicsDescription",
+	"sessionTypesDescription",
+	"cfpDeadlineAsString",
+	"cfpDeadlineUTC_Year",
+	"cfpDeadlineUTC_Month",
+	"cfpDeadlineUTC_Day",
+	"cfpDeadlineUTC_Hour",
+	"cfpDeadlineUTC_Minute",
+	"scheduleIsPublic",
+	"locations",
+}
+
+// Session type fields that may be published.
+var sessionTypePublicFields = []string{
+	"key",
+	"text",
+	"duration",
+	"description",
+	"hidden",
+}
 
 // Fields on a proposal that must never reach the public site.
 var proposalPrivateFields = []string{
@@ -142,6 +178,19 @@ func run() error {
 	if err := os.MkdirAll(jsDir, 0o755); err != nil {
 		return err
 	}
+
+	events, err := fetchJSON(eventURL)
+	if err != nil {
+		return fmt.Errorf("event: %w", err)
+	}
+	event, err := publicEvent(events, eventID)
+	if err != nil {
+		return fmt.Errorf("event: %w", err)
+	}
+	if err := writeJSFile(eventFile, "eventConfigJson", event); err != nil {
+		return err
+	}
+	fmt.Printf("Wrote event settings to %s (call for papers deadline: %v)\n", eventFile, event["cfpDeadlineAsString"])
 
 	if err := downloadPhotos(); err != nil {
 		return fmt.Errorf("speaker photos: %w", err)
@@ -498,6 +547,73 @@ func writeJSFile(path, varName string, content interface{}) error {
 		return fmt.Errorf("writing %s: %w", path, err)
 	}
 	return nil
+}
+
+// publicEvent picks the event with the given id from the planning tool's
+// response and keeps only the fields in eventPublicFields. It adds
+// cfpDeadlineUTC, the deadline as an ISO 8601 UTC timestamp, so the site can
+// compare it with the current time without rebuilding it from the parts.
+func publicEvent(events []interface{}, id string) (map[string]interface{}, error) {
+	var raw map[string]interface{}
+	for _, e := range events {
+		if m, ok := e.(map[string]interface{}); ok && m["id"] == id {
+			raw = m
+			break
+		}
+	}
+	if raw == nil {
+		return nil, fmt.Errorf("no event with id %q in the response", id)
+	}
+
+	event := map[string]interface{}{}
+	for _, field := range eventPublicFields {
+		if v, ok := raw[field]; ok {
+			event[field] = v
+		}
+	}
+
+	if types, ok := raw["sessionTypes"].([]interface{}); ok {
+		public := make([]interface{}, 0, len(types))
+		for _, t := range types {
+			m, ok := t.(map[string]interface{})
+			if !ok {
+				continue
+			}
+			st := map[string]interface{}{}
+			for _, field := range sessionTypePublicFields {
+				if v, ok := m[field]; ok {
+					st[field] = v
+				}
+			}
+			public = append(public, st)
+		}
+		event["sessionTypes"] = public
+	}
+
+	if deadline, ok := cfpDeadline(raw); ok {
+		event["cfpDeadlineUTC"] = deadline.Format(time.RFC3339)
+	}
+	if _, ok := event["cfpDeadlineAsString"].(string); !ok {
+		return nil, fmt.Errorf("event %q has no call for papers deadline (cfpDeadlineAsString)", id)
+	}
+	return event, nil
+}
+
+// cfpDeadline builds the deadline from the cfpDeadlineUTC_* number fields.
+func cfpDeadline(raw map[string]interface{}) (time.Time, bool) {
+	part := func(name string) (int, bool) {
+		f, ok := raw["cfpDeadlineUTC_"+name].(float64)
+		return int(f), ok
+	}
+	y, ok1 := part("Year")
+	mo, ok2 := part("Month")
+	d, ok3 := part("Day")
+	h, ok4 := part("Hour")
+	mi, ok5 := part("Minute")
+	if !(ok1 && ok2 && ok3 && ok4 && ok5) {
+		return time.Time{}, false
+	}
+	return time.Date(y, time.Month(mo), d, h, mi, 0, 0, time.UTC), true
 }
 
 func isAccepted(proposal map[string]interface{}) bool {

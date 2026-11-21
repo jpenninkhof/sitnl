@@ -5,7 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SAP Inside Track Netherlands 2027</title>
   <meta name="description" content="SAP Inside Track Netherlands returns on 22 and 23 January 2027 in 's-Hertogenbosch: a free, community-run event for people who build with SAP technology.">
-  <link rel="icon" type="image/svg+xml" href="assets/sitnl-2027-logo.svg">
+  <link rel="canonical" href="https://sitnl.nl/">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#001448">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="sitNL">
+  <meta property="og:url" content="https://sitnl.nl/">
+  <meta property="og:title" content="SAP Inside Track Netherlands 2027">
+  <meta property="og:description" content="SAP Inside Track Netherlands returns on 22 and 23 January 2027 in 's-Hertogenbosch: a free, community-run event for people who build with SAP technology.">
+  <meta property="og:image" content="https://sitnl.nl/assets/sitnl-2027-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="sitNL 2027 logo with the text: Build things that matter. 22 to 23 January 2027, 's-Hertogenbosch. Free, in person.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SAP Inside Track Netherlands 2027">
+  <meta name="twitter:description" content="SAP Inside Track Netherlands returns on 22 and 23 January 2027 in 's-Hertogenbosch: a free, community-run event for people who build with SAP technology.">
+  <meta name="twitter:image" content="https://sitnl.nl/assets/sitnl-2027-share.png">
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "SAP Inside Track Netherlands 2027",
+    "alternateName": "sitNL 2027",
+    "description": "A free, community-run event for people who build with SAP technology: a day of codejams, then a full day of talks by the community.",
+    "startDate": "2027-01-22",
+    "endDate": "2027-01-23",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "isAccessibleForFree": true,
+    "inLanguage": "en",
+    "image": [
+      "https://sitnl.nl/assets/sitnl-2027-share.png"
+    ],
+    "url": "https://sitnl.nl/",
+    "location": {
+      "@type": "Place",
+      "name": "SAP Nederland",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Amerikastraat 10",
+        "postalCode": "5232 BE",
+        "addressLocality": "'s-Hertogenbosch",
+        "addressCountry": "NL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.71252,
+        "longitude": 5.33944
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "SAP Inside Track Netherlands",
+      "url": "https://sitnl.nl/",
+      "email": "info@sitnl.nl"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "url": "https://sitnl.nl/#register"
+    },
+    "subEvent": [
+      {
+        "@type": "Event",
+        "name": "sitNL 2027 pre-event: codejams",
+        "startDate": "2027-01-22",
+        "endDate": "2027-01-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "isAccessibleForFree": true,
+        "location": {
+          "@type": "Place",
+          "name": "SAP Nederland",
+          "address": "Amerikastraat 10, 5232 BE 's-Hertogenbosch, NL"
+        }
+      },
+      {
+        "@type": "Event",
+        "name": "SAP Inside Track Netherlands 2027: main event",
+        "startDate": "2027-01-23",
+        "endDate": "2027-01-23",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "isAccessibleForFree": true,
+        "location": {
+          "@type": "Place",
+          "name": "SAP Nederland",
+          "address": "Amerikastraat 10, 5232 BE 's-Hertogenbosch, NL"
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preload" href="assets/fonts/72-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/72-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js');</script>
@@ -139,9 +234,24 @@
     .intro .trio { margin-bottom: 1.5rem; }
     .intro h2 { margin-bottom: 1rem; }
 
+    /* Previous editions strip */
+    .past { margin-top: 4rem; }
+    .past h3 { margin-bottom: .75rem; }
+    .past-photos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 2rem 0 1.5rem; }
+    .past-photos img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+    @media (max-width: 48rem) { .past-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
     /* Video */
     .video-frame { aspect-ratio: 16 / 9; max-width: 56rem; background: var(--bg-top); }
     .video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+    /* Click-to-load: a local poster stands in for the YouTube player until someone presses play */
+    .video-play { position: relative; display: block; width: 100%; height: 100%; color: var(--on-accent); }
+    .video-play img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play .play { position: absolute; left: 50%; top: 50%; width: 5rem; height: 5rem; margin: -2.5rem 0 0 -2.5rem; border-radius: 999px; background: var(--accent); display: grid; place-items: center; transition: background-color 120ms, transform 240ms var(--ease); }
+    .video-play .play svg { width: 1.75rem; height: 1.75rem; margin-left: .25rem; }
+    .video-play:hover .play, .video-play:focus-visible .play { background: var(--accent-hover); transform: scale(1.06); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    @media (prefers-reduced-motion: reduce) { .video-play .play { transition: none; } }
 
     /* Days: giant numeral behind (§6.3) */
     .days { position: relative; isolation: isolate; overflow: hidden; }
@@ -203,7 +313,7 @@
     .travel h3 { margin-bottom: .5rem; }
 
     /* Register / save-the-date band */
-    .register { background: var(--bg-top); }
+    .register { background: var(--bg); }
     .register h2 { margin-bottom: 1rem; }
     .register .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gutter); align-items: end; }
 
@@ -278,7 +388,7 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Quiet bar, appears after the hero -->
+  <!-- Quiet bar, appears once the hero header scrolls out of view -->
   <div class="bar" id="bar" inert>
     <div class="wrap">
       <a class="brand" href="#top" aria-label="Back to top">
@@ -334,7 +444,14 @@
         </div>
         <figure class="hero-video rise" id="video">
           <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/rvsy4NfkXWg?rel=0" title="sitNL 2027: call to join" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <a class="video-play" href="https://www.youtube.com/watch?v=rvsy4NfkXWg" data-youtube="rvsy4NfkXWg" data-title="sitNL 2027: call to join" rel="noopener">
+              <picture>
+                <source srcset="images/video-poster.webp" type="image/webp">
+                <img src="images/video-poster.jpg" alt="" width="960" height="540" fetchpriority="low">
+              </picture>
+              <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z" fill="currentColor"/></svg></span>
+              <span class="sr-only">Play video: sitNL 2027, call to join (loads YouTube)</span>
+            </a>
           </div>
           <figcaption class="meta">A short message from the organisers on why sitNL is back in 2027.</figcaption>
         </figure>
@@ -384,12 +501,25 @@
       <div class="wrap">
         <div class="intro reveal">
           <h2 id="expect-title">What makes it sitNL</h2>
+          <p>For developers, architects and BI/data people who work with SAP technology, whether you've been part of the community for years or this is your first sitNL.</p>
         </div>
         <ul class="rows reveal">
           <li><h3>Two tracks</h3><p>A tech track, and the BI/data track.</p></li>
           <li><h3>The pub quiz</h3><p>Hosted by quizmaster Dick Groenhof. Bring a team, or join one on the spot.</p></li>
-          <li><h3>Run by volunteers</h3><p>No ticket price and no sales pitches from the stage. Sponsors cover the costs, so the day stays free.</p></li>
+          <li><h3>Run by volunteers</h3><p>No ticket price and no sales pitches from the stage. Sponsors cover the costs, so the day stays free. This year's team: Twan van den Broek, Jan-Willem Kaagman, Ronald Konijnenburg, Tim Koster, Jan Penninkhof, Wim Snoep, Tamas Szirtes and Caspar van Tergouw.</p></li>
         </ul>
+
+        <div class="past reveal" aria-labelledby="past-title">
+          <h3 id="past-title">Previous editions</h3>
+          <p>sitNL turned 15 in 2025. The last edition, on 29 November 2025, had 15 community talks and 2 keynotes by 19 speakers.</p>
+          <div class="past-photos">
+            <img src="images/past/2019-community.webp" alt="A speaker in front of a slide that reads: sitNL was my personal introduction to the SAP community" width="640" height="400" loading="lazy">
+            <img src="images/past/2018-room.webp" alt="A full room listening to a talk at sitNL 2018" width="640" height="400" loading="lazy">
+            <img src="images/past/2019-hands.webp" alt="Attendees raising their hands during a session at sitNL 2019" width="640" height="400" loading="lazy">
+            <img src="images/past/2019-crowd.webp" alt="Two attendees taking a selfie in front of the audience at sitNL 2019" width="640" height="400" loading="lazy">
+          </div>
+          <p class="meta">Look back: <a href="archive/sitnl2025/">2025 site</a>, <a href="archive/sitnl2019/">2019</a>, <a href="archive/sitnl2018/">2018</a>, <a href="https://www.youtube.com/watch?v=O12D4POargk" rel="noopener">sitNL turns 15 (video)</a>, <a href="https://www.youtube.com/watch?v=EyFSG2LxLCM" rel="noopener">That's a wrap (video)</a>, <a href="https://photos.app.goo.gl/AZmnfymytHRdrEfe8" rel="noopener">photo album</a></p>
+        </div>
       </div>
     </section>
 
@@ -418,7 +548,7 @@
             <h3>Key dates</h3>
             <dl class="hours">
               <dt>Submissions</dt><dd>open now</dd>
-              <dt>Deadline</dt><dd>to be announced</dd>
+              <dt>Deadline</dt><dd data-event="cfpDeadlineAsString">18 December 2026</dd>
               <dt>Speakers notified</dt><dd>to be announced</dd>
               <dt>Event</dt><dd>23 January 2027</dd>
             </dl>
@@ -458,7 +588,7 @@
     </section>
 
     <!-- GETTING THERE -->
-    <section class="band" id="getting-there" aria-labelledby="there-title">
+    <section class="band band-top" id="getting-there" aria-labelledby="there-title">
       <div class="wrap">
         <div class="intro reveal">
           <span class="trio" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -508,15 +638,44 @@
         <li><a href="mailto:info@sitnl.nl?subject=%5Bsitnl%202027%5D%20Question">Reach out to us</a></li>
         <li><a href="codeofconduct.html">Code of conduct</a></li>
       </ul>
-      <p class="meta">Organised by volunteers from the Dutch SAP community. Venue: SAP Nederland, Amerikastraat 10, 5232 BE ’s-Hertogenbosch. Contact: <a href="mailto:info@sitnl.nl">info@sitnl.nl</a></p>
-      <p class="meta">Kasimir 3D: Koen Vissers (kunemann.com) with Goebel + Mattes, with thanks to SAP TechEd.</p>
-      <p class="meta">© 2027 SAP Inside Track Netherlands</p>
+      <p class="meta">Organised by volunteers from the Dutch SAP community: Twan van den Broek, Jan-Willem Kaagman, Ronald Konijnenburg, Tim Koster, Jan Penninkhof, Wim Snoep, Tamas Szirtes and Caspar van Tergouw. Venue: SAP Nederland, Amerikastraat 10, 5232 BE ’s-Hertogenbosch. Contact: <a href="mailto:info@sitnl.nl">info@sitnl.nl</a></p>
+      <p class="meta">© SAP Inside Track Netherlands</p>
     </div>
   </footer>
 
   <!-- Kasimir peeks in bottom-right after 5 s (spot-Kasimir easter egg); see kasimir/ and design.md §10 -->
   <button class="kasimir-peek" type="button" data-src="kasimir/kasimir-idle.mp4" data-delay="5000"></button>
   <script src="kasimir/kasimir.js" defer></script>
+
+  <script>
+    /* Swap the video poster for the YouTube player on click. Without JS the link opens YouTube. */
+    document.querySelectorAll('.video-play[data-youtube]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var frame = document.createElement('iframe');
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + link.dataset.youtube + '?rel=0&autoplay=1';
+        frame.title = link.dataset.title;
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.allowFullscreen = true;
+        link.replaceWith(frame);
+        frame.focus();
+      });
+    });
+  </script>
+
+  <!-- Event settings: var eventConfigJson = {...}, written by agenda/main.go.
+       Fills elements marked data-event="<field>"; the text in the HTML is the fallback. -->
+  <script src="js/event.js"></script>
+  <script>
+    (function () {
+      if (typeof eventConfigJson === 'undefined' || !eventConfigJson) return;
+      document.querySelectorAll('[data-event]').forEach(function (el) {
+        var value = eventConfigJson[el.getAttribute('data-event')];
+        if (typeof value === 'string' && value.trim()) el.textContent = value;
+      });
+    })();
+  </script>
 
   <!-- Sponsor data: var sponsorLineupJson = [...], written by agenda/main.go -->
   <script src="js/sponsors.js"></script>
@@ -577,15 +736,16 @@
       const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      // Quiet bar: shows once the hero has scrolled away
+      // Quiet bar: shows as soon as the hero's own header (logo + nav) scrolls out of view,
+      // so there is always a menu on screen
       const bar = document.getElementById('bar');
-      const hero = document.querySelector('.hero');
-      if ('IntersectionObserver' in window) {
+      const head = document.querySelector('.hero .site-head');
+      if (head && 'IntersectionObserver' in window) {
         new IntersectionObserver(([e]) => {
-          const on = !e.isIntersecting;
+          const on = !e.isIntersecting && e.boundingClientRect.top < 0;
           bar.classList.toggle('is-on', on);
           bar.inert = !on;
-        }, { threshold: 0.05 }).observe(hero);
+        }).observe(head);
       }
 
       // Magnetic primary action: desktop pointer only, max 6px, off for reduced motion
