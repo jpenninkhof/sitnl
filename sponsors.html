@@ -112,9 +112,11 @@
     .sponsor h3, .sponsor h4 { font-weight: 700; font-size: 1.6875rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 .25rem; }
     .motto { color: var(--ink-soft); font-size: 1.0625rem; margin: 0 0 1rem; }
     .description { margin: 0 0 1rem; max-width: 66ch; }
-    .links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: 1.5rem; }
-    .links a { display: inline-block; padding-block: .5rem; color: var(--ink-soft); }
+    /* Icon links: 44px tap target around a 22px icon; the negative margin lines the first icon up with the text */
+    .links { list-style: none; margin: 0 0 0 -.6875rem; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem; }
+    .links a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--ink-soft); border-radius: 999px; transition: color 120ms; }
     .links a:hover { color: var(--ink); }
+    .links .icon { width: 1.375rem; height: 1.375rem; }
 
     .empty { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; max-width: 44rem; }
     .empty p { margin: 0; }
@@ -274,23 +276,33 @@
         if (description) body.appendChild(el("p", "description", description));
 
         var bluesky = text(sponsor.blueskyHandle).replace(/^@/, "");
+        // [label, url, icon id in assets/icons/social.svg]
         var links = [
-          ["Website", safeUrl(text(sponsor.website))],
-          ["LinkedIn", safeUrl(link("https://www.linkedin.com/company/", sponsor.linkedInHandle))],
-          ["Bluesky", safeUrl(bluesky ? link("https://bsky.app/profile/", bluesky) : null)],
-          ["Instagram", safeUrl(link("https://www.instagram.com/", sponsor.instagramHandle))],
-          ["Facebook", safeUrl(link("https://www.facebook.com/", sponsor.facebookHandle))],
-          ["YouTube", safeUrl(link("https://www.youtube.com/", sponsor.youtubeHandle))]
+          ["Website", safeUrl(text(sponsor.website)), "website"],
+          ["LinkedIn", safeUrl(link("https://www.linkedin.com/company/", sponsor.linkedInHandle)), "linkedin"],
+          ["Bluesky", safeUrl(bluesky ? link("https://bsky.app/profile/", bluesky) : null), "bluesky"],
+          ["Instagram", safeUrl(link("https://www.instagram.com/", sponsor.instagramHandle)), "insta"],
+          ["Facebook", safeUrl(link("https://www.facebook.com/", sponsor.facebookHandle)), "facebook"],
+          ["YouTube", safeUrl(link("https://www.youtube.com/", sponsor.youtubeHandle)), "youtube"]
         ].filter(function (l) { return l[1]; });
 
         if (links.length) {
           var ul = el("ul", "links");
           ul.setAttribute("aria-label", "Links for " + name);
           links.forEach(function (l) {
-            var a = el("a", null, l[0]);
+            var a = el("a");
             a.href = l[1];
             a.rel = "noopener nofollow";
+            a.title = l[0];
             a.setAttribute("aria-label", l[0] + " of " + name);
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("class", "icon");
+            svg.setAttribute("aria-hidden", "true");
+            svg.setAttribute("focusable", "false");
+            var use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+            use.setAttribute("href", "assets/icons/social.svg#" + l[2]);
+            svg.appendChild(use);
+            a.appendChild(svg);
             var item = el("li");
             item.appendChild(a);
             ul.appendChild(item);
