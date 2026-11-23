@@ -1,0 +1,36 @@
+# Netlify build for sitnl.nl
+#
+# Each deploy runs agenda/main.go, which pulls the public event settings,
+# agenda, speaker photos and sponsors and writes js/event.js, js/agenda.js,
+# js/sponsors.js and images/speakers/. Those files are git-ignored and only
+# exist in the deployed site. If the script fails (planning tool down, wrong
+# credentials) the build fails and the previous deploy stays live.
+#
+# Required environment variables (Netlify UI, Project configuration >
+# Environment variables, mark the secrets as secret):
+#   APP_USERNAME, APP_PASSWORD, APP_TOTP_SECRET   scope: Builds
+#   BUILD_HOOK_URL                                scope: Functions
+#
+# netlify/functions/refresh-data.mjs triggers a rebuild every 4 hours.
+
+[build]
+  command = "cd agenda && go run ."
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  GO_VERSION = "1.23.2"
+
+# The repo root is the published folder; keep the data script and the
+# function source off the public site.
+[[redirects]]
+  from = "/agenda/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404"
+  status = 404
+  force = true

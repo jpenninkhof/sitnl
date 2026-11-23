@@ -25,6 +25,10 @@
 // reused on the next runs, so a one-time OTP is only needed again when the
 // session expires (the planning tool issues sessions for 7 days).
 //
+// In a CI or Netlify build (CI or NETLIFY set) no session file is read or
+// written: the repo root is the published folder there, so a saved session
+// would end up on the public site. Those runs log in with APP_TOTP_SECRET.
+//
 // It exits non-zero on any failure, so a CI run never publishes partial or
 // empty data. Output is deterministic (sorted), so an unchanged agenda gives
 // an unchanged file and no git diff.
@@ -163,16 +167,20 @@ func run() error {
 		CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
-	if restoreSession() {
+	keepSession := os.Getenv("CI") == "" && os.Getenv("NETLIFY") == ""
+	if keepSession && restoreSession() {
 		fmt.Println("Reusing saved session")
 	} else {
 		if err := login(creds); err != nil {
 			return fmt.Errorf("login: %w", err)
 		}
-		if err := saveSession(); err != nil {
+		if !keepSession {
+			fmt.Println("Logged in (build environment, session not saved)")
+		} else if err := saveSession(); err != nil {
 			fmt.Fprintln(os.Stderr, "warning: could not save session:", err)
+		} else {
+			fmt.Println("Logged in, session saved to", sessionFile)
 		}
-		fmt.Println("Logged in, session saved to", sessionFile)
 	}
 
 	if err := os.MkdirAll(jsDir, 0o755); err != nil {

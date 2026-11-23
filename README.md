@@ -38,8 +38,9 @@ map are iframes and need http.
 
 ## Deploy
 
-Netlify deploys `main` of `github.com/jpenninkhof/sitnl` to sitnl.nl automatically
-(repo root is the publish folder, no build command).
+Netlify deploys `main` of `github.com/jpenninkhof/sitnl` to sitnl.nl automatically.
+The repo root is the publish folder; the build command (`netlify.toml`) runs the data
+script, see "Data" below.
 
 ```bash
 git add -A
@@ -65,12 +66,28 @@ are enabled for the site.
 - `js/sponsors.js` (`var sponsorLineupJson = [...]`)
 - speaker photos into `images/speakers/`
 
-Run it from the `agenda/` folder, with the planning-tool credentials in environment
-variables (never commit them):
+**On Netlify (normal case):** every deploy runs `cd agenda && go run .` (see
+`netlify.toml`), so the generated files only exist in the deployed site, never in git.
+`netlify/functions/refresh-data.mjs` is a scheduled function that calls the
+"Scheduled data refresh" build hook every 4 hours (at :17), so new sessions and
+sponsors appear without a push. That is about 180 build minutes a month on the free
+plan's 300. If the script fails (planning tool down, credentials changed), the build
+fails and the previous deploy stays live: check the deploy log in Netlify.
+
+Netlify environment variables (Project configuration > Environment variables):
+`APP_USERNAME`, `APP_PASSWORD`, `APP_TOTP_SECRET` (scope Builds, secret) and
+`BUILD_HOOK_URL` (scope Functions, the URL of the "Scheduled data refresh" hook under
+Developer settings > Build hooks). `APP_TOTP_SECRET` is the "manual entry code" from
+the planning tool's two-factor setup; if 2FA is ever reset, update it here and in
+`agenda/credentials.key`. Builds don't save a session file (it would be published).
+
+**Locally:** run it from the `agenda/` folder. Credentials come from environment
+variables or `agenda/credentials.key` (git-ignored; `Username:`, `Password:`,
+`TOTP:` lines). Never commit them.
 
 ```bash
 cd agenda
-APP_USERNAME=... APP_PASSWORD=... go run .
+go run .
 ```
 
 Important for 2027:
